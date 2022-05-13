@@ -1,9 +1,11 @@
 package pt.c40task.l05wumpus;
 
 public class Buraco extends Componente {
-    public Buraco(int i, int j){
-        pos = new int[2];
-        pos[0] = i;
-        pos[1] = j;
+    public Buraco(int[] pos, Caverna cav){
+        this.pos = new int[2];
+        this.pos[0] = pos[0];
+        this.pos[1] = pos[1];
+        this.cav = cav;
+        this.symbol = 'B';
     }
 }
