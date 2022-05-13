@@ -3,12 +3,15 @@ package pt.c40task.l05wumpus;
 public abstract class Componente {
     protected int[] pos;
     protected Caverna cav;
-    protected String symbol;
+    protected char symbol;
 
-    public String getSymbol(){
+    public int[] getPos(){
+        return pos;
+    }
+    public char getSymbol(){
         return symbol;
     }
-    public void conecta(Caverna cav){
-        this.cav = cav;
+    public void setSymbol(char symbol){
+        this.symbol = symbol;
     }
 }
