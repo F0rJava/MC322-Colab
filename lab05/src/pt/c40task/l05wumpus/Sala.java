@@ -2,10 +2,21 @@ package pt.c40task.l05wumpus;
 
 public class Sala {
     private Componente[] comps;
+    private boolean visitada;
 
     public Sala(){
         comps = new Componente[6]; //Número total de componentes distintos
+        visitada = false;
     }
+
+    public Componente[] getComps(){
+        return comps;
+    }
+
+    public boolean getVisitada(){
+        return this.visitada;
+    }
+
     public String getPrioComponente(){
         String aux = "";
         return aux;
