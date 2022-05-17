@@ -7,7 +7,7 @@ public class Heroi extends Componente{
 
     public Heroi(int flecha, int[] pos, Caverna cav){
         //Específicos do Herói
-        this.flecha = flecha; //Criado assim para ser mais fácil a expanão no caso de um jogo com mais flechas
+        this.flecha = flecha; //Criado assim para ser mais fácil a expansão no caso de um jogo com mais flechas
         this.flechaEquipada = false;
         this.ouro = 0;
 
