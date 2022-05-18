@@ -84,15 +84,15 @@ public class AppWumpus {
          System.out.println("Score: " + controle.getPontos());
 
          //imprime mensagens de fim de jogo: perdeu, venceu ou saiu do jogo
-         if(controle.getStatus()=='n'){
+         if(controle.getStatus()=='L'){
             System.out.println("Voce perdeu =( ...");
             break;
          }
-         else if(controle.getStatus()=='w'){
+         else if(controle.getStatus()=='W'){
             System.out.println("Voce ganhou =D !!!");
             break;
          }
-         else if(saiu && controle.getStatus()=='x'){
+         else if(saiu && controle.getStatus()=='P'){
             System.out.println("Volte sempre !");
             break;
          }

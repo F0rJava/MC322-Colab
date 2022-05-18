@@ -9,7 +9,7 @@ public class Controle {
     public Controle(Heroi hero){
         this.hero = hero;
         this.pontos = 0;
-        this.status = 'x';
+        this.status = 'P';
     }
     public int getPontos(){
         return pontos;
@@ -45,15 +45,15 @@ public class Controle {
 
                 if(hero.cav.getMatriz()[i][j].temComponente('W')){ //Se tem um Wumpus na sala o heroi tem 50% de chance de matá-lo
                     Random rand = new Random();
-                    if(rand.nextInt(1) == 1){ //Herói morreu
+                    if(rand.nextInt(2) == 1){ //Herói morreu
                         this.pontos -= 1000;
                         hero.setSymbol(' ');
-                        this.status = 'n';
+                        this.status = 'L';
                     }
                     else{ //Herói matou o Wumpus
                         this.pontos += 500;
                         hero.cav.getMatriz()[i][j].eliminaComponente('W');
-                        this.status = 'x';
+                        this.status = 'P';
                     }
                 }
             }
@@ -61,13 +61,13 @@ public class Controle {
                 if(hero.cav.getMatriz()[i][j].temComponente('W')){
                     this.pontos -= 1000;
                     hero.setSymbol(' '); //Heroi morreu
-                    this.status = 'n';
+                    this.status = 'L';
                 }
             }
             if(hero.cav.getMatriz()[i][j].temComponente('B')){
                 this.pontos -= 1000;
                 hero.setSymbol(' '); //Heroi morreu
-                this.status = 'n';
+                this.status = 'L';
             }
         }
     }
@@ -81,7 +81,7 @@ public class Controle {
                 hero.pegaOuro();
                 this.pontos += 1000;
                 hero.cav.getMatriz()[hero.pos[0]][hero.pos[1]].eliminaComponente('O');
-                this.status = 'w';
+                this.status = 'W';
             }
         }
         else if(c == 'q'){
