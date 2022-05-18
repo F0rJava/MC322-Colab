@@ -42,8 +42,11 @@ public class AppWumpus {
          montador.montaCaverna(cave[i]);
       }
 
-      Controle controle = new Controle(heroi);
+      //vetor de char para impressao da caverna
+      char partialCave[][] = new char[4][4];
 
+      //instancia o controle e roda os comandos do arquivo movements
+      Controle controle = new Controle(heroi);
       for(int i=0; i<movements.length(); i++){
          boolean saiu;
          if(movements.charAt(i) == 'c' ||movements.charAt(i) == 'k' || movements.charAt(i) == 'q'){
@@ -52,6 +55,13 @@ public class AppWumpus {
          else{
             controle.acao(movements.charAt(i));
          }
+         for(int j=0; j<caverna.getMatriz().length; j++){
+            for(int k=0; k<caverna.getMatriz().length; k++){
+               partialCave[j][k] = caverna.getMatriz()[j][k].getPrioComponente();
+            }
+         }
+         tk.writeBoard(partialCave, controle.getPontos(), controle);
+
       }
       /* System.out.println("=== Caverna Intermediaria");
       char partialCave[][] = {
