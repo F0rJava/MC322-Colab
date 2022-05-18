@@ -21,9 +21,34 @@ public class Sala {
         return this.visitada;
     }
 
-    public String getPrioComponente(){
-        String aux = "";
-        return aux;
+    public char getPrioComponente(){
+        char aux = ' ';
+        if(visitada){
+            for(int i = 0; i < comps.length; i++){
+                if(comps[i] != null){
+                    if(comps[i].getSymbol() == 'O')
+                        return 'O';
+                    else if(comps[i].getSymbol() == 'W')
+                        return 'W';
+                    else if(comps[i].getSymbol() == 'B')
+                        return 'B';
+                    else if(comps[i].getSymbol() == 'P')
+                        aux = 'P';
+                    else if(comps[i].getSymbol() == 'f' && aux != 'P')
+                        aux = 'f';
+                    else if(comps[i].getSymbol() == 'b' && aux == ' ')
+                        aux = 'b';
+                }
+            }
+            if(aux == ' ')
+                return '#';
+            return aux;
+        }
+        return '-';
+    }
+
+    public void visitou(){
+        this.visitada = true;
     }
 
     public boolean temComponente(char c){
