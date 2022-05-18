@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class Toolkit {
    public static String DIRETORIO = System.getProperty("user.dir") +
-		                            "/lab05/src/pt/c40task/l05wumpus/";
+		                            "/src/pt/c40task/l05wumpus/";
    
    private static Toolkit tk;
    

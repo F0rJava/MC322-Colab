@@ -25,6 +25,19 @@ public class AppWumpus {
       System.out.println("=== Movimentos");
       System.out.println(movements);
       
+      //cria o objeto caverna
+      Caverna caverna = new Caverna();
+
+      //cone
+
+      //cria o objeto montador e monta a caverna
+      Montador montador = new Montador();
+      montador.conecta(caverna);
+
+      for(int i=0; i<cave.length; i++){
+         montador.montaCaverna(cave[i]);
+      }
+
       System.out.println("=== Caverna Intermediaria");
       char partialCave[][] = {
          {'#', '#', 'b', '-'},
