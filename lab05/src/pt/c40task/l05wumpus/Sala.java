@@ -58,8 +58,6 @@ public class Sala {
                 if(comps[i].getSymbol() == c)
                     return true;
             }
-            else //Acabaram os Componente da Sala
-                return false;
         }
         return false;
     }
