@@ -30,9 +30,11 @@ public class Controle {
         else if(mov == 'd')
             j++;
         if(i <= hero.cav.getMatriz().length && j <= hero.cav.getMatriz()[0].length){ //Confere se é posicao válida dentro do mapa
-            hero.mover(i, j);
+            hero.cav.getMatriz()[hero.pos[0]][hero.pos[1]].retiraHeroi(); //Retira o Componente Heroi da sala em que estava
+            hero.cav.getMatriz()[i][j].getComps()[hero.cav.getMatriz()[i][j].espacoVazio()] = hero; //Adiciona o Heroi na nova sala em que se moveu
+            hero.mover(i, j); //Move o heroi
             this.pontos -= 15;
-            hero.cav.getMatriz()[i][j].visitou();
+            hero.cav.getMatriz()[i][j].visitou(); //Visitou a nova sala
 
             if(hero.flechaEquipada){ //O herói se moveu com a flecha equipada, ou seja, ele a atirou
                 hero.atiraFlecha();
