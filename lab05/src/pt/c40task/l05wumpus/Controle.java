@@ -17,6 +17,9 @@ public class Controle {
     public char getStatus(){
         return status;
     }
+    public void setSatuts(char c){
+        this.status = c;
+    }
     public void acao(char mov){
         //Método que recebe um char indicando o movimento
         int i = hero.pos[0], j = hero.pos[1];
@@ -50,7 +53,7 @@ public class Controle {
                     else{ //Herói matou o Wumpus
                         this.pontos += 500;
                         hero.cav.getMatriz()[i][j].eliminaComponente('W');
-                        this.status = 'n';
+                        this.status = 'x';
                     }
                 }
             }
@@ -68,7 +71,7 @@ public class Controle {
             }
         }
     }
-    public void acao(char c, boolean saiu){
+    public boolean acao(char c, boolean saiu){
         //Recebe um char q será equivalente a uma das ações abaixo, e altera um boolean (saiu) se o jogador saiu ou não do jogo,
         //se a acao for 'q' ele saiu do jogo
         if(c == 'k')
@@ -82,8 +85,8 @@ public class Controle {
             }
         }
         else if(c == 'q'){
-            saiu = true;
+            return true;
         }
-        saiu = false;
+        return false;
     }
 }
