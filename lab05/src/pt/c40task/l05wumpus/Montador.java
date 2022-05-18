@@ -16,9 +16,6 @@ public class Montador{
         //adiciona um novo objeto de cada componente na sala especificada, na posição vazia
         //caso seja B ou W, adiciona tambem brisa e fedor, respectivamente
         switch(info[2].charAt(0)){
-            case 'P':
-                cav.getMatriz()[0][0].setComps(new Heroi(1, pos, cav), espacoVazio(cav,pos));
-                break;
             case 'B':
                 cav.getMatriz()[pos[0]][pos[1]].setComps(new Buraco(pos, cav), espacoVazio(cav,pos));
                 adicionaSecundario('B', pos, cav);

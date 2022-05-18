@@ -28,17 +28,22 @@ public class AppWumpus {
       //cria o objeto caverna
       Caverna caverna = new Caverna();
 
-      //cone
-
-      //cria o objeto montador e monta a caverna
+      //cria o objeto montador
       Montador montador = new Montador();
       montador.conecta(caverna);
 
-      for(int i=0; i<cave.length; i++){
+      //instancia o heroi que sempre começa na sala 1,1
+      int[] posInicial = {0,0};
+      Heroi heroi = new Heroi(1, posInicial, caverna);
+      caverna.getMatriz()[0][0].setComps(heroi, 0);
+
+      //monta a caverna
+      for(int i=1; i<cave.length; i++){
          montador.montaCaverna(cave[i]);
       }
 
-      System.out.println("=== Caverna Intermediaria");
+      Controle controle = new Controle(heroi);
+      /* System.out.println("=== Caverna Intermediaria");
       char partialCave[][] = {
          {'#', '#', 'b', '-'},
          {'#', 'b', '-', '-'},
@@ -58,7 +63,7 @@ public class AppWumpus {
       };
       score = -1210;
       status = 'n'; // 'w' para venceu; 'n' para perdeu; 'x' intermediárias
-      tk.writeBoard(finalCave, score, status);
+      tk.writeBoard(finalCave, score, status); */
       
       tk.stop();
    }
