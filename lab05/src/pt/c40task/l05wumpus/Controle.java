@@ -22,9 +22,9 @@ public class Controle {
         int i = hero.pos[0], j = hero.pos[1];
         //Atualizacao do i e j conforme o movimento adequado
         if(mov == 'w')
-            i++;
-        else if(mov == 's')
             i--;
+        else if(mov == 's')
+            i++;
         else if(mov == 'a')
             j--;
         else if(mov == 'd')
