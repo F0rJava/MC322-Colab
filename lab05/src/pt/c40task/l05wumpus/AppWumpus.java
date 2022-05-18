@@ -1,5 +1,4 @@
 package pt.c40task.l05wumpus;
-
 import java.util.Scanner;
 
 public class AppWumpus {
@@ -8,7 +7,7 @@ public class AppWumpus {
       AppWumpus.executaJogo(
             (args.length > 0) ? args[0] : null,
             (args.length > 1) ? args[1] : null,
-            (args.length > 2) ? args[2] : null);
+            (args.length > 2) ? args[2] : null);  
    }
    
    public static void executaJogo(String arquivoCaverna, String arquivoSaida,
