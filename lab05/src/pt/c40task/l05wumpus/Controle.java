@@ -46,7 +46,7 @@ public class Controle {
             }
         }
     }
-    public boolean acao(char c){
+    public void acao(char c, boolean saiu){
         //Recebe um char q será equivalente a uma das ações abaixo, e retorna um boolean se o jogador saiu ou não do jogo, se a acao for 'q' ele saiu do jogo
         if(c == 'k')
             hero.carregaFlecha();
@@ -58,8 +58,8 @@ public class Controle {
             }
         }
         else if(c == 'q'){
-            return true;
+            saiu = true;
         }
-        return false;
+        saiu = false;
     }
 }

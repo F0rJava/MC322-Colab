@@ -43,6 +43,16 @@ public class AppWumpus {
       }
 
       Controle controle = new Controle(heroi);
+
+      for(int i=0; i<movements.length(); i++){
+         boolean saiu;
+         if(movements.charAt(i) == 'c' ||movements.charAt(i) == 'k' || movements.charAt(i) == 'q'){
+            controle.acao(movements.charAt(i), saiu);
+         }
+         else{
+            controle.acao(movements.charAt(i));
+         }
+      }
       /* System.out.println("=== Caverna Intermediaria");
       char partialCave[][] = {
          {'#', '#', 'b', '-'},
