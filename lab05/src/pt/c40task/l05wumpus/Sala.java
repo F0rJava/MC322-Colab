@@ -38,11 +38,11 @@ public class Sala {
         }
         return false;
     }
-    public void mataWumpus(){
-        //Método feito para o herói "matar" o Wumpus, alterando seu símbolo para ' '
+    public void eliminaComponente(char c){
+        //Método feito para eliminar um componente do vetor, tornando seu simbolo = ' '
         for(int i = 0; i < 6; i++){
             if(comps[i] != null){
-                if(comps[i].getSymbol() == 'W'){ //Como só podemos ter um Wumpus por sala, assim que acharmos no vetor podemos sair do for
+                if(comps[i].getSymbol() == c){ //Como só podemos ter, no máximo, um Componente de cada por sala
                     comps[i].setSymbol(' ');
                     break;
                 }
