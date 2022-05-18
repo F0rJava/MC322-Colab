@@ -59,7 +59,11 @@ public class AppWumpus {
       for(int i=0; i<movements.length(); i++){
          boolean saiu = false;
          if(movements.charAt(i) == 'c' ||movements.charAt(i) == 'k' || movements.charAt(i) == 'q'){
-            controle.acao(movements.charAt(i), saiu);
+            saiu = controle.acao(movements.charAt(i), saiu);
+            if(saiu && heroi.ouro == 1){
+               controle.setSatuts('w');
+               break;
+            }
          }
          else{
             controle.acao(movements.charAt(i));
@@ -73,6 +77,18 @@ public class AppWumpus {
          }
          System.out.println("Player: Sting");
          System.out.println("Score: " + controle.getPontos());
+         if(controle.getStatus()=='n'){
+            System.out.println("Voce perdeu =( ...");
+            break;
+         }
+         else if(controle.getStatus()=='w'){
+            System.out.println("Voce ganhou =D !!!");
+            break;
+         }
+         else if(saiu && controle.getStatus()=='x'){
+            System.out.println("Volte sempre !");
+            break;
+         }
          tk.writeBoard(impressaoCaverna, controle.getPontos(), controle.getStatus());
       }
       
