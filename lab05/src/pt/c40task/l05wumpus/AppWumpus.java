@@ -1,5 +1,7 @@
 package pt.c40task.l05wumpus;
 
+import java.util.Scanner;
+
 public class AppWumpus {
 
    public static void main(String[] args) {
@@ -62,14 +64,14 @@ public class AppWumpus {
             saiu = controle.acao(movements.charAt(i), saiu);
             //checa se saiu e muda o status do controle
             if(saiu && heroi.ouro == 1){
-               controle.setSatuts('w');
+               controle.setStatus('w');
                break;
             }
          }
          else{
             controle.acao(movements.charAt(i));
          }
-         
+
          //imprime a caverna
          for(int j=0; j<caverna.getMatriz().length; j++){
             for(int k=0; k<caverna.getMatriz().length; k++){

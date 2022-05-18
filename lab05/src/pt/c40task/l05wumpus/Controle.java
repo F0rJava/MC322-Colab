@@ -17,7 +17,7 @@ public class Controle {
     public char getStatus(){
         return status;
     }
-    public void setSatuts(char c){
+    public void setStatus(char c){
         this.status = c;
     }
     public void acao(char mov){
