@@ -20,7 +20,7 @@ public class AppWumpus {
       //cria o objeto caverna
       Caverna caverna = new Caverna();
 
-      //cria o objeto montador
+      //cria o objeto montador e o conecta com a caverna
       Montador montador = new Montador();
       montador.conecta(caverna);
 
@@ -34,7 +34,7 @@ public class AppWumpus {
          montador.montaCaverna(cave[i]);
       }
 
-      //altera o status visitado da posição do heroi para true
+      //altera o status visitado da posição do heroi para true, pois o herói começa nesta posição
       caverna.getMatriz()[0][0].visitou();
 
       //vetor de char para impressao da caverna
