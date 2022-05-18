@@ -60,7 +60,7 @@ public class Montador{
                     cav.getMatriz()[pos[0]-1][pos[1]].setComps(new Brisa(posSec, cav), espacoVazio(cav,posSec));
                     posSec[0] = pos[0];
                 }
-                if(pos[0]+1<cav.getMatriz().length && cav.getMatriz()[pos[0]+1][pos[1]].temComponente('b')){
+                if(pos[0]+1<cav.getMatriz().length && !cav.getMatriz()[pos[0]+1][pos[1]].temComponente('b')){
                     posSec[0]++;
                     cav.getMatriz()[pos[0]+1][pos[1]].setComps(new Brisa(posSec, cav), espacoVazio(cav,posSec));
                     posSec[0] = pos[0];
@@ -82,7 +82,7 @@ public class Montador{
                     cav.getMatriz()[pos[0]-1][pos[1]].setComps(new Fedor(posSec, cav), espacoVazio(cav,posSec));
                     posSec[0] = pos[0];
                 }
-                if(pos[0]+1<cav.getMatriz().length && cav.getMatriz()[pos[0]+1][pos[1]].temComponente('f')){
+                if(pos[0]+1<cav.getMatriz().length && !cav.getMatriz()[pos[0]+1][pos[1]].temComponente('f')){
                     posSec[0]++;
                     cav.getMatriz()[pos[0]+1][pos[1]].setComps(new Fedor(posSec, cav), espacoVazio(cav,posSec));
                     posSec[0] = pos[0];
