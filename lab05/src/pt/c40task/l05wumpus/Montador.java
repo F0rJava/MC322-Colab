@@ -17,28 +17,17 @@ public class Montador{
         //caso seja B ou W, adiciona tambem brisa e fedor, respectivamente
         switch(info[2].charAt(0)){
             case 'B':
-                cav.getMatriz()[pos[0]][pos[1]].setComps(new Buraco(pos, cav), espacoVazio(cav,pos));
+                cav.getMatriz()[pos[0]][pos[1]].setComps(new Buraco(pos, cav), cav.getMatriz()[pos[0]][pos[1]].espacoVazio());
                 adicionaSecundario('B', pos, cav);
                 break;               
             case 'O':
-                cav.getMatriz()[pos[0]][pos[1]].setComps(new Ouro(pos, cav), espacoVazio(cav,pos));
+                cav.getMatriz()[pos[0]][pos[1]].setComps(new Ouro(pos, cav), cav.getMatriz()[pos[0]][pos[1]].espacoVazio());
                 break;
             case 'W':
-                cav.getMatriz()[pos[0]][pos[1]].setComps(new Wumpus(pos, cav), espacoVazio(cav,pos));
+                cav.getMatriz()[pos[0]][pos[1]].setComps(new Wumpus(pos, cav), cav.getMatriz()[pos[0]][pos[1]].espacoVazio());
                 adicionaSecundario('W', pos, cav);
                 break;
         };
-    }
-
-    //recebe a caverna, que pede para a sala o vetor de componentes
-    //e percorre o vetor ate encontrar um espaço vazio
-    public int espacoVazio(Caverna cav, int[] pos){
-        for(int i=0; i<cav.getMatriz()[pos[0]][pos[1]].getComps().length; i++){
-            if(cav.getMatriz()[pos[0]][pos[1]].getComps()[i] == null){
-                return i;
-            }
-        }
-        return cav.getMatriz()[pos[0]][pos[1]].getComps().length+1;
     }
 
     public void adicionaSecundario(char compSec, int[] pos, Caverna cav){
@@ -54,44 +43,44 @@ public class Montador{
             case 'B':
                 if(pos[0]-1>=0 && !cav.getMatriz()[pos[0]-1][pos[1]].temComponente('b')){
                     posSec[0]--;
-                    cav.getMatriz()[pos[0]-1][pos[1]].setComps(new Brisa(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]-1][pos[1]].setComps(new Brisa(posSec, cav), cav.getMatriz()[pos[0]-1][pos[1]].espacoVazio());
                     posSec[0] = pos[0];
                 }
                 if(pos[0]+1<cav.getMatriz().length && !cav.getMatriz()[pos[0]+1][pos[1]].temComponente('b')){
                     posSec[0]++;
-                    cav.getMatriz()[pos[0]+1][pos[1]].setComps(new Brisa(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]+1][pos[1]].setComps(new Brisa(posSec, cav), cav.getMatriz()[pos[0]+1][pos[1]].espacoVazio());
                     posSec[0] = pos[0];
                 }
                 if(pos[1]-1>=0 && !cav.getMatriz()[pos[0]][pos[1]-1].temComponente('b')){
                     posSec[1]--;
-                    cav.getMatriz()[pos[0]][pos[1]-1].setComps(new Brisa(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]][pos[1]-1].setComps(new Brisa(posSec, cav), cav.getMatriz()[pos[0]][pos[1]-1].espacoVazio());
                     posSec[1] = pos[1];
                 }
                 if(pos[1]+1<cav.getMatriz().length && !cav.getMatriz()[pos[0]][pos[1]+1].temComponente('b')){
                     posSec[1]++;
-                    cav.getMatriz()[pos[0]][pos[1]+1].setComps(new Brisa(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]][pos[1]+1].setComps(new Brisa(posSec, cav), cav.getMatriz()[pos[0]][pos[1]+1].espacoVazio());
                     posSec[1] = pos[1];
                 }
             break;
             case 'W':
                 if(pos[0]-1>0 && !cav.getMatriz()[pos[0]-1][pos[1]].temComponente('f')){
                     posSec[0]--;
-                    cav.getMatriz()[pos[0]-1][pos[1]].setComps(new Fedor(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]-1][pos[1]].setComps(new Fedor(posSec, cav), cav.getMatriz()[pos[0]-1][pos[1]].espacoVazio());
                     posSec[0] = pos[0];
                 }
                 if(pos[0]+1<cav.getMatriz().length && !cav.getMatriz()[pos[0]+1][pos[1]].temComponente('f')){
                     posSec[0]++;
-                    cav.getMatriz()[pos[0]+1][pos[1]].setComps(new Fedor(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]+1][pos[1]].setComps(new Fedor(posSec, cav), cav.getMatriz()[pos[0]+1][pos[1]].espacoVazio());
                     posSec[0] = pos[0];
                 }
                 if(pos[1]-1>0 && !cav.getMatriz()[pos[0]][pos[1]-1].temComponente('f')){
                     posSec[1]--;
-                    cav.getMatriz()[pos[0]][pos[1]-1].setComps(new Fedor(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]][pos[1]-1].setComps(new Fedor(posSec, cav), cav.getMatriz()[pos[0]][pos[1]-1].espacoVazio());
                     posSec[1] = pos[1];
                 }
                 if(pos[1]+1<cav.getMatriz().length && !cav.getMatriz()[pos[0]][pos[1]+1].temComponente('f')){
                     posSec[1]++;
-                    cav.getMatriz()[pos[0]][pos[1]+1].setComps(new Fedor(posSec, cav), espacoVazio(cav,posSec));
+                    cav.getMatriz()[pos[0]][pos[1]+1].setComps(new Fedor(posSec, cav), cav.getMatriz()[pos[0]][pos[1]+1].espacoVazio());
                     posSec[1] = pos[1];
                 }
             break;    

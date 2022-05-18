@@ -22,6 +22,7 @@ public class Sala {
     }
 
     public char getPrioComponente(){
+        //Método que pega o symbol do Componente com maior prioridade, para a impressão das salas
         char aux = ' ';
         if(visitada){
             for(int i = 0; i < comps.length; i++){
@@ -71,5 +72,23 @@ public class Sala {
                 }
             }
         }
+    }
+    public void retiraHeroi(){
+        //Método que retira o Heroi de dentro desta sala
+        for(int i = 0; i < comps.length; i++){
+            if(comps[i].getSymbol() == 'P'){
+                comps[i] = null;
+                break;
+            }
+        }
+    }
+    public int espacoVazio(){
+        //Método que retorna o primeiro espaço vazio no vetor de componentes, retornando o tamanho do vetor + 1 caso este espaço não exista
+        for(int i=0; i<comps.length; i++){
+            if(comps[i] == null){
+                return i;
+            }
+        }
+        return comps.length+1;
     }
 }
