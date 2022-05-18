@@ -13,6 +13,10 @@ public class Sala {
         return comps;
     }
 
+    public void setComps(Componente comp, int i){
+        this.comps[i] = comp;
+    }
+
     public boolean getVisitada(){
         return this.visitada;
     }
@@ -21,6 +25,7 @@ public class Sala {
         String aux = "";
         return aux;
     }
+
     public boolean temComponente(char c){
         //Método que verifica a existência de um Componente com o symbol == c no vetor de Componente da Sala
         for(int i = 0; i < 6; i++){
