@@ -60,6 +60,7 @@ public class AppWumpus {
          boolean saiu = false;
          if(movements.charAt(i) == 'c' ||movements.charAt(i) == 'k' || movements.charAt(i) == 'q'){
             saiu = controle.acao(movements.charAt(i), saiu);
+            //checa se saiu e muda o status do controle
             if(saiu && heroi.ouro == 1){
                controle.setSatuts('w');
                break;
@@ -68,6 +69,8 @@ public class AppWumpus {
          else{
             controle.acao(movements.charAt(i));
          }
+         
+         //imprime a caverna
          for(int j=0; j<caverna.getMatriz().length; j++){
             for(int k=0; k<caverna.getMatriz().length; k++){
                impressaoCaverna[j][k] = caverna.getMatriz()[j][k].getPrioComponente();
@@ -77,6 +80,8 @@ public class AppWumpus {
          }
          System.out.println("Player: Sting");
          System.out.println("Score: " + controle.getPontos());
+
+         //imprime mensagens de fim de jogo: perdeu, venceu ou saiu do jogo
          if(controle.getStatus()=='n'){
             System.out.println("Voce perdeu =( ...");
             break;
