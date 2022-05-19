@@ -32,14 +32,14 @@ public class Controle {
             j--;
         else if(mov == 'd')
             j++;
-        if(i <= hero.cav.getMatriz().length && j <= hero.cav.getMatriz()[0].length){ //Confere se é posicao válida dentro do mapa
+        if(i >= 0 && i < hero.cav.getMatriz().length && j >= 0 && j < hero.cav.getMatriz()[0].length){ //Confere se é posicao válida dentro do mapa
             hero.cav.getMatriz()[hero.pos[0]][hero.pos[1]].retiraHeroi(); //Retira o Componente Heroi da sala em que estava
             hero.cav.getMatriz()[i][j].getComps()[hero.cav.getMatriz()[i][j].espacoVazio()] = hero; //Adiciona o Heroi na nova sala em que se moveu
             hero.mover(i, j); //Move o heroi
             this.pontos -= 15;
             hero.cav.getMatriz()[i][j].visitou(); //Visitou a nova sala
 
-            if(hero.flechaEquipada){ //O herói se moveu com a flecha equipada, ou seja, ele a atirou
+            if(hero.getEquipada()){ //O herói se moveu com a flecha equipada, ou seja, ele a atirou
                 hero.atiraFlecha();
                 this.pontos -= 100;
 
@@ -53,7 +53,14 @@ public class Controle {
                     else{ //Herói matou o Wumpus
                         this.pontos += 500;
                         hero.cav.getMatriz()[i][j].eliminaComponente('W');
-                        this.status = 'P';
+                        if(i+1 < hero.cav.getMatriz().length)
+                            hero.cav.getMatriz()[i+1][j].eliminaComponente('f');
+                        if(i-1 >= 0)
+                            hero.cav.getMatriz()[i-1][j].eliminaComponente('f');
+                        if(j+1 < hero.cav.getMatriz()[0].length)
+                            hero.cav.getMatriz()[i][j+1].eliminaComponente('f');
+                        if(j-1 >= 0)
+                            hero.cav.getMatriz()[i][j-1].eliminaComponente('f');
                     }
                 }
             }
@@ -81,10 +88,11 @@ public class Controle {
                 hero.pegaOuro();
                 this.pontos += 1000;
                 hero.cav.getMatriz()[hero.pos[0]][hero.pos[1]].eliminaComponente('O');
-                this.status = 'W';
             }
         }
         else if(c == 'q'){
+            if(hero.getQntOuro() == 1)
+                this.status = 'W';
             return true;
         }
         return false;
