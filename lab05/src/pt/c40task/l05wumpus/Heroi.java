@@ -1,9 +1,9 @@
 package pt.c40task.l05wumpus;
 
 public class Heroi extends Componente{
-    int flecha;
-    boolean flechaEquipada;
-    int ouro;
+    private int flecha;
+    private boolean flechaEquipada;
+    private int ouro;
 
     public Heroi(int flecha, int[] pos, Caverna cav){
         //Específicos do Herói
@@ -20,10 +20,19 @@ public class Heroi extends Componente{
     }
 
     /*Métodos específicos do Herói*/
-
+    public boolean getEquipada(){
+        return flechaEquipada;
+    }
+    public int getFlecha(){
+        return flecha;
+    }
+    public int getQntOuro(){
+        return ouro;
+    }
     public void carregaFlecha(){
         //Método que carrega a flecha, que será atirada no próx movimento
-        this.flechaEquipada = true;
+        if(flecha > 0)
+            this.flechaEquipada = true;
     }
     public void atiraFlecha(){
         //Método que atira a flecha, automaticamente desequipando e diminuindo em 1 o número total de flechas
