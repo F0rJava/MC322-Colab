@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="MC322-Colab:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f5be651-cb86-439a-9d5f-08c010fea2d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/MainMenuScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java" afterDir="false" />
+    <list default="true" id="7f5be651-cb86-439a-9d5f-08c010fea2d6" name="Changes" comment="Corrige classes e adiciona texturas de alguns objetos">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/assets/Kitchen/mesa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Chef.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Objetos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Prato.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/Crazychef.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/Crazychef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/models/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Chef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/models/Objetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Objetos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/models/Objetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Objects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/models/Prato.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Plate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/desktop/build/resources/main/Kitchen/mesa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/desktop/build/resources/main/Level 1 - design.psd" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/desktop/build/resources/main/Level 1 - design.psd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/desktop/src/com/crazychef/game/DesktopLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/desktop/src/com/crazychef/game/DesktopLauncher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +52,9 @@
         <task path="$PROJECT_DIR$/Crazychef/desktop">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/Crazychef/core">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -47,6 +70,33 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="core" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="core" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="core" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="core" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
                 <item name="desktop" type="2d1252cf:ModuleNode" />
               </path>
               <path>
@@ -54,6 +104,34 @@
                 <item name="Crazychef" type="f1a62948:ProjectNode" />
                 <item name="desktop" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Crazychef" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="ide" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -94,7 +172,11 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -102,13 +184,34 @@
       <recent name="com.crazychef.game" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Crazychef:desktop [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.Crazychef:desktop [run]">
+    <configuration name="Crazychef:desktop [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/Crazychef/desktop" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Crazychef:desktop [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Crazychef/desktop" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -122,11 +225,18 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true" />
+      </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.Crazychef:desktop [compileJava]" />
+      <item itemvalue="Gradle.Crazychef:desktop [run]" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Crazychef:desktop [run]" />
+        <item itemvalue="Gradle.Crazychef:desktop [compileJava]" />
       </list>
     </recent_temporary>
   </component>
@@ -139,6 +249,21 @@
       <option name="presentableId" value="Default" />
       <updated>1655828622780</updated>
     </task>
+    <task id="LOCAL-00001" summary="Corrige classes e adiciona texturas de alguns objetos">
+      <created>1655858558983</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655858558983</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Corrige classes e adiciona texturas de alguns objetos">
+      <created>1655858625029</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655858625029</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -151,5 +276,25 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Corrige classes e adiciona texturas de alguns objetos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrige classes e adiciona texturas de alguns objetos" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="objectsMatrix[2]" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
