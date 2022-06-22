@@ -21,16 +21,16 @@ public class Controller{
 
     //movimenta o chef, checando se não há colisões com outros objetos
     public void up(){
-        chef.y += 60;
+        chef.y += 80;
     }
     public void down(){
-        chef.y -= 60;
+        chef.y -= 80;
     }
     public void left(){
-        chef.x -= 60;
+        chef.x -= 80;
     }
     public void right(){
-        chef.x += 60;
+        chef.x += 80;
     }
     public void setChef(Chef chef){
         this.chef = chef;

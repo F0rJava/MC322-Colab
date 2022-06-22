@@ -1,8 +1,8 @@
 package com.models;
 
-public class Chef extends Objetos{
+public class Chef extends Objects {
     //private ArrayList;
-    private Prato prato;
+    private Plate plate;
 
     public Chef(int x, int y) {
         //posição onde o chefe inicia
