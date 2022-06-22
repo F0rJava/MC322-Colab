@@ -5,6 +5,7 @@ public class Chef extends Objetos{
     private Prato prato;
 
     public Chef(int x, int y) {
-        super(x, y);
+        //posição onde o chefe inicia
+        super(x,y);
     }
 }

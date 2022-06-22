@@ -1,36 +1,27 @@
 package com.crazychef.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.Texture;
+import com.controller.Controller;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.models.Objetos;
 
-import java.io.ObjectStreamException;
+public class Crazychef extends Game {
+	//renderiza as texturas
+	public SpriteBatch batch;
+	//controle do jogo
+	public Controller controller;
 
-public class Crazychef extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-
-	Objetos chef = new Objetos(640, 360);
-
-	@Override
-	public void create () {
+	public void create() {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		controller = new Controller();
+		this.setScreen(new MainMenuScreen(this, controller));
 	}
 
-	@Override
-	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+	public void render() {
+		super.render();
 	}
-	
-	@Override
-	public void dispose () {
+
+	public void dispose() {
 		batch.dispose();
-		img.dispose();
 	}
 }

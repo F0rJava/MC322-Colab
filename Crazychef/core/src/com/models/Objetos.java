@@ -7,8 +7,8 @@ public class Objetos extends Rectangle{
     private Rectangle objeto;
 
     public Objetos(int x, int y){
-        objeto.x = x;
-        objeto.y= y;
+        this.x = x;
+        this.y= y;
     }
 
     public Rectangle getObjeto(){
