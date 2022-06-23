@@ -9,7 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f5be651-cb86-439a-9d5f-08c010fea2d6" name="Changes" comment="Cria classe Table" />
+    <list default="true" id="7f5be651-cb86-439a-9d5f-08c010fea2d6" name="Changes" comment="Cria classe Table">
+      <change afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Kitchen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -282,7 +299,12 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="GradleRunConfiguration">
-        <watch expression="objectsMatrix[2]" />
+        <watch expression="objectsMatrix" language="JAVA" />
+        <watch expression="objectsMatrix[Math.round(chef.y/80)+1][Math.round(chef.x/80)]" language="JAVA" />
+        <watch expression="objectsMatrix[4][8]" language="JAVA" />
+        <watch expression="Math.round(chef.y/80)" language="JAVA" />
+        <watch expression="Math.round(chef.x/80)" language="JAVA" />
+        <watch expression="objectsMatrix[Math.round(chef.y/80)][Math.round(chef.x/80)]" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
