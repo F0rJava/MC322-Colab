@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f5be651-cb86-439a-9d5f-08c010fea2d6" name="Changes" comment="Cria classe Table">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2022_13_27__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2022_13_27__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2022_13_27__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_23_06_2022_13_27__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" afterDir="false" />
@@ -21,13 +21,13 @@
       <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/assets/Kitchen/mesa_frontal.png" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/assets/Kitchen/tableFront.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/controller/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/crazychef/game/ScreenLevel1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/models/Chef.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Chef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/models/Kitchen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/models/Kitchen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
     </list>

@@ -16,9 +16,11 @@ public class ScreenLevel1 implements Screen{
     private Texture background;
     private Texture tableImageH;
     private Texture tableImageV;
+
+    private Texture tableImageFront;
     private OrthographicCamera camera;
     private Chef chef;
-    private Kitchen cozinha;
+    private Kitchen kitchen;
 
     public ScreenLevel1(final Crazychef game, Controller controller){
         this.game = game;
@@ -27,15 +29,16 @@ public class ScreenLevel1 implements Screen{
         background = new Texture(Gdx.files.internal("Kitchen/chao_fases.png"));//textura da fase
         tableImageH = new Texture(Gdx.files.internal("Kitchen/tableH.png"));
         tableImageV = new Texture(Gdx.files.internal("Kitchen/tableV.png"));
+        tableImageFront = new Texture(Gdx.files.internal("Kitchen/tableFront.png"));
 
         camera = new OrthographicCamera();//camera
         camera.setToOrtho(false, 1280, 720);
-        cozinha = new Kitchen(10, 17);
+        kitchen = new Kitchen(10, 17);
 
         chef = new Chef(640,320);//pos na matriz [4][8]
-        cozinha.setObjects(chef, Math.round(chef.y/80), Math.round(chef.x/80));
+        kitchen.getFloor(Math.round(chef.y/80), Math.round(chef.x/80)).addObjects(chef);
         controller.setChef(chef);
-        controller.setKitchen(cozinha);
+        controller.setKitchen(kitchen);
     }
 
     @Override
@@ -51,8 +54,26 @@ public class ScreenLevel1 implements Screen{
         //cria o mapa da sala
         for(int j=1; j<15;j++){
             Table tableV = new Table(80*j,480);
-            cozinha.setObjects(tableV, 6, j);
+            kitchen.getFloor(6, j).addObjects(tableV);
             game.batch.draw(tableImageV,tableV.x, tableV.y, tableV.width,tableV.height);
+        }
+
+        Table tableFront1 =  new Table(80, 0);
+        kitchen.getFloor(0, 1). addObjects(tableFront1);
+        game.batch.draw(tableImageFront,tableFront1.x, tableFront1.y, tableFront1.width,tableFront1.height);
+        for(int i=1; i<7; i++){
+            Table tableH = new Table(80, 80*i);
+            kitchen.getFloor(i, 1). addObjects(tableH);
+            game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
+        }
+
+        Table tableFront2 =  new Table(1120, 0);
+        kitchen.getFloor(0, 1). addObjects(tableFront2);
+        game.batch.draw(tableImageFront,tableFront2.x, tableFront2.y, tableFront2.width,tableFront2.height);
+        for(int i=1; i<7; i++){
+            Table tableH = new Table(1120, 80*i);
+            kitchen.getFloor(i, 14). addObjects(tableH);
+            game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
         }
 
         game.batch.draw(chefFront, chef.x, chef.y,chef.width,chef.height);
