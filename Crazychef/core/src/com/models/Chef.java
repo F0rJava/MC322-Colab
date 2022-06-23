@@ -7,5 +7,7 @@ public class Chef extends Objects {
     public Chef(int x, int y) {
         //posição onde o chefe inicia
         super(x,y);
+        this.width = 80;
+        this.height = 120;
     }
 }

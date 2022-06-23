@@ -18,7 +18,7 @@ public class ScreenLevel1 implements Screen{
     private Texture tableImageV;
     private OrthographicCamera camera;
     private Chef chef;
-    private Objects kitchen[][];
+    private Kitchen cozinha;
 
     public ScreenLevel1(final Crazychef game, Controller controller){
         this.game = game;
@@ -30,14 +30,12 @@ public class ScreenLevel1 implements Screen{
 
         camera = new OrthographicCamera();//camera
         camera.setToOrtho(false, 1280, 720);
-        kitchen = new Objects[10][17];
+        cozinha = new Kitchen(10, 17);
 
         chef = new Chef(640,320);//pos na matriz [4][8]
-        chef.width = 80;
-        chef.height = 120;
-        kitchen[Math.round(chef.y/80)][Math.round(chef.x/80)] = chef;
+        cozinha.setObjects(chef, Math.round(chef.y/80), Math.round(chef.x/80));
         controller.setChef(chef);
-
+        controller.setKitchen(cozinha);
     }
 
     @Override
@@ -51,9 +49,9 @@ public class ScreenLevel1 implements Screen{
         game.batch.draw(chefFront, chef.x, chef.y,chef.width,chef.height);
 
         //cria o mapa da sala
-        for(int i=1; i<15;i++){
-            Table tableV = new Table(80*i,480);
-            kitchen[6][i] = tableV;
+        for(int j=1; j<15;j++){
+            Table tableV = new Table(80*j,480);
+            cozinha.setObjects(tableV, 6, j);
             game.batch.draw(tableImageV,tableV.x, tableV.y, tableV.width,tableV.height);
         }
 
@@ -61,13 +59,13 @@ public class ScreenLevel1 implements Screen{
         game.batch.end();
 
         if (Gdx.input.isKeyJustPressed(Keys.LEFT))
-            controller.left(kitchen);
+            controller.left();
         if (Gdx.input.isKeyJustPressed(Keys.RIGHT))
-            controller.right(kitchen);
+            controller.right();
         if (Gdx.input.isKeyJustPressed(Keys.UP))
-            controller.up(kitchen);
+            controller.up();
         if (Gdx.input.isKeyJustPressed(Keys.DOWN))
-            controller.down(kitchen);
+            controller.down();
 
         //nao deixa o chef sair das bordas da tela
         if (chef.x < 0)
@@ -76,7 +74,7 @@ public class ScreenLevel1 implements Screen{
             chef.x = 1280 - 80;
         if (chef.y > 720 - 80)
             chef.y = 720 - 80;
-        if (chef.y <0)
+        if (chef.y < 0)
             chef.y = 0;
 
     }
