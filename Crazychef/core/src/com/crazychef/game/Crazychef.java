@@ -13,7 +13,7 @@ public class Crazychef extends Game {
 
 	public void create() {
 		batch = new SpriteBatch();
-		controller = new Controller();
+		controller = new Controller(batch);
 		this.setScreen(new MainMenuScreen(this, controller));
 	}
 

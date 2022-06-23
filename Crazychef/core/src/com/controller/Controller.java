@@ -1,12 +1,34 @@
 package com.controller;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.models.*;
 import com.models.mapdesign.Kitchen;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 //classe responsavel por controlar as views do jogo e os models
 public class Controller{
     private Chef chef;
     private Kitchen kitchen;
+    private float timeCount;
+    private Integer worldTimer;
+
+    private Label timeLabel;
+    private Label countdownLabel;
+
+    public Controller(SpriteBatch sb){
+        worldTimer = 300;
+        timeCount = 0;
+
+        countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
+    }
 
 
     //movimenta o chef, checando se não há colisões com outros objetos
@@ -48,5 +70,13 @@ public class Controller{
 
     public void setKitchen(Kitchen cozinha){
         this.kitchen = cozinha;
+    }
+
+    public void setTimer() {
+
+    }
+
+    {
+
     }
 }

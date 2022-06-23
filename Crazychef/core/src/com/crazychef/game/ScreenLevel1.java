@@ -21,7 +21,6 @@ public class ScreenLevel1 implements Screen{
     private Texture background;
     private Texture tableImageH;
     private Texture tableImageV;
-
     private Texture tableImageFront;
     private OrthographicCamera camera;
     private Chef chef;
@@ -54,7 +53,7 @@ public class ScreenLevel1 implements Screen{
     @Override
     public void render(float delta){
         camera.update();
-
+        controller.setTimer();
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin(); //inicia a renderização
