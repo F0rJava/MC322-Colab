@@ -15,6 +15,9 @@ public class ScreenLevel1 implements Screen{
     final Crazychef game;
     private Controller controller;
     private Texture chefFront;
+    private Texture chefBack;
+    private Texture chefLeft;
+    private Texture chefRight;
     private Texture background;
     private Texture tableImageH;
     private Texture tableImageV;
@@ -27,7 +30,12 @@ public class ScreenLevel1 implements Screen{
     public ScreenLevel1(final Crazychef game, Controller controller){
         this.game = game;
         this.controller = controller;
+
         chefFront = new Texture(Gdx.files.internal("Chef/chefFront.png"));//textura do chef
+        chefBack = new Texture(Gdx.files.internal("Chef/chefBack.png"));
+        chefRight = new Texture(Gdx.files.internal("Chef/chefRight.png"));
+        chefLeft = new Texture(Gdx.files.internal("Chef/chefLeft.png"));
+
         background = new Texture(Gdx.files.internal("Kitchen/chao_fases.png"));//textura da fase
         tableImageH = new Texture(Gdx.files.internal("Kitchen/tableH.png"));
         tableImageV = new Texture(Gdx.files.internal("Kitchen/tableV.png"));
@@ -51,7 +59,6 @@ public class ScreenLevel1 implements Screen{
 
         game.batch.begin(); //inicia a renderização
         game.batch.draw(background, 0,0, 1280, 720);//imagem do fundo
-        game.batch.draw(chefFront, chef.x, chef.y,chef.width,chef.height);
 
         //cria o mapa da sala
         for(int j=1; j<15;j++){
@@ -78,17 +85,28 @@ public class ScreenLevel1 implements Screen{
             game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
         }
 
-        game.batch.draw(chefFront, chef.x, chef.y,chef.width,chef.height);
-        game.batch.end();
+        if(chef.getOrientation(0))
+            game.batch.draw(chefFront, chef.x, chef.y,chef.width,chef.height);
+        else if(chef.getOrientation(1))
+            game.batch.draw(chefBack, chef.x, chef.y, chef.width, chef.height);
+        else if(chef.getOrientation(2))
+            game.batch.draw(chefLeft, chef.x, chef.y, chef.width, chef.height);
+        else if(chef.getOrientation(3))
+            game.batch.draw(chefRight, chef.x, chef.y, chef.width, chef.height);
 
-        if (Gdx.input.isKeyJustPressed(Keys.LEFT))
+        if (Gdx.input.isKeyJustPressed(Keys.LEFT)) {
             controller.left();
-        if (Gdx.input.isKeyJustPressed(Keys.RIGHT))
+        }
+        if (Gdx.input.isKeyJustPressed(Keys.RIGHT)) {
             controller.right();
-        if (Gdx.input.isKeyJustPressed(Keys.UP))
+        }
+        if (Gdx.input.isKeyJustPressed(Keys.UP)) {
             controller.up();
-        if (Gdx.input.isKeyJustPressed(Keys.DOWN))
+        }
+        if (Gdx.input.isKeyJustPressed(Keys.DOWN)) {
             controller.down();
+        }
+        game.batch.end();
 
         //nao deixa o chef sair das bordas da tela
         if (chef.x < 0)
@@ -99,7 +117,6 @@ public class ScreenLevel1 implements Screen{
             chef.y = 720 - 80;
         if (chef.y < 0)
             chef.y = 0;
-
     }
 
 
