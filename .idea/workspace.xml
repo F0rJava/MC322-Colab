@@ -9,19 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f5be651-cb86-439a-9d5f-08c010fea2d6" name="Changes" comment="Cria classe Table">
+    <list default="true" id="7f5be651-cb86-439a-9d5f-08c010fea2d6" name="Changes" comment="[Feat] orientação do chef">
       <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/crazychef/game/ScreenLevel1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/libs/core-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/src/com/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/desktop/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Chef.class" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Chef.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Floor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Kitchen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Plate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/core/build/classes/java/main/com/models/Table.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crazychef/desktop/build/resources/main/Chef/chefFront.png" beforeDir="false" afterPath="$PROJECT_DIR$/Crazychef/desktop/build/resources/main/Chef/chefFront.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,21 +151,24 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2AtUxMRMwSw5j20xmfbNekmSZ1Z" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.crazychef.game" />
@@ -292,7 +290,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656001952750</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[Feat] orientação do chef">
+      <created>1656016067298</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1656016067298</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[Feat] orientação do chef">
+      <created>1656016083908</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1656016083909</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -319,13 +331,15 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Corrige classes e adiciona texturas de alguns objetos" />
     <MESSAGE value="Adiciona geração da fase" />
     <MESSAGE value="Corrige nomes das classes" />
     <MESSAGE value="Cria classe Table" />
     <MESSAGE value="&quot;&quot;" />
     <MESSAGE value="&quot;corrige controle&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;corrige controle&quot;" />
+    <MESSAGE value="[Feat] orientação do chef" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Feat] orientação do chef" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
