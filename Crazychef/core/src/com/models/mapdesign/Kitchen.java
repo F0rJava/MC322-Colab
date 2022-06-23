@@ -1,4 +1,7 @@
-package com.models;
+package com.models.mapdesign;
+
+import com.models.Objects;
+import com.models.mapdesign.Floor;
 
 public class Kitchen {
     private Floor[][] floors;

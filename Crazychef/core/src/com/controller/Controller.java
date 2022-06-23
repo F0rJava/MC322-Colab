@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.models.*;
+import com.models.mapdesign.Kitchen;
 
 //classe responsavel por controlar as views do jogo e os models
 public class Controller{

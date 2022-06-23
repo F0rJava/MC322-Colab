@@ -7,6 +7,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.Input.*;
+import com.models.mapdesign.Kitchen;
+import com.models.mapdesign.Table;
 
 
 public class ScreenLevel1 implements Screen{

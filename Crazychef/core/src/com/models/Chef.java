@@ -1,5 +1,7 @@
 package com.models;
 
+import com.models.mapdesign.Plate;
+
 public class Chef extends Objects {
     //private ArrayList;
     private Plate plate;

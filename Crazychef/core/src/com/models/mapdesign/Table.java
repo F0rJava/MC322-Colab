@@ -1,6 +1,8 @@
-package com.models;
+package com.models.mapdesign;
 
-public class Table extends Objects{
+import com.models.Objects;
+
+public class Table extends Objects {
     public Table(int x, int y) {
         super(x, y);
         this.width = 80;

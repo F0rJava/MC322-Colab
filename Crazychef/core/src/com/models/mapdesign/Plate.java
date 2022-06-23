@@ -1,4 +1,6 @@
-package com.models;
+package com.models.mapdesign;
+
+import com.models.Objects;
 
 public class Plate extends Objects {
 
