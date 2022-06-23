@@ -1,7 +1,5 @@
 package com.crazychef.game;
 
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.utils.Null;
 import com.controller.Controller;
 import com.models.*;
 import com.badlogic.gdx.Gdx;
@@ -20,7 +18,7 @@ public class ScreenLevel1 implements Screen{
     private Texture tableImageV;
     private OrthographicCamera camera;
     private Chef chef;
-    private Objects objectsMatrix[][];
+    private Objects kitchen[][];
 
     public ScreenLevel1(final Crazychef game, Controller controller){
         this.game = game;
@@ -32,11 +30,12 @@ public class ScreenLevel1 implements Screen{
 
         camera = new OrthographicCamera();//camera
         camera.setToOrtho(false, 1280, 720);
-        objectsMatrix = new Objects[9][16];
+        kitchen = new Objects[10][17];
 
-        chef = new Chef(640,320);
+        chef = new Chef(640,320);//pos na matriz [4][8]
         chef.width = 80;
         chef.height = 120;
+        kitchen[Math.round(chef.y/80)][Math.round(chef.x/80)] = chef;
         controller.setChef(chef);
 
     }
@@ -54,33 +53,29 @@ public class ScreenLevel1 implements Screen{
         //cria o mapa da sala
         for(int i=1; i<15;i++){
             Table tableV = new Table(80*i,480);
-            objectsMatrix[2][i] = tableV;
+            kitchen[6][i] = tableV;
             game.batch.draw(tableImageV,tableV.x, tableV.y, tableV.width,tableV.height);
         }
 
         game.batch.draw(chefFront, chef.x, chef.y,chef.width,chef.height);
         game.batch.end();
 
-        if (Gdx.input.isKeyPressed(Keys.LEFT))
-            controller.left();
-        if (Gdx.input.isKeyPressed(Keys.RIGHT))
-            controller.right();
-        if (Gdx.input.isKeyPressed(Keys.UP)){
-            if(objectsMatrix[(int) (chef.y/80)][(int) (chef.x/80)+1]==null){
-                controller.up();
-            }
-        }
-
-        if (Gdx.input.isKeyPressed(Keys.DOWN))
-            controller.down();
+        if (Gdx.input.isKeyJustPressed(Keys.LEFT))
+            controller.left(kitchen);
+        if (Gdx.input.isKeyJustPressed(Keys.RIGHT))
+            controller.right(kitchen);
+        if (Gdx.input.isKeyJustPressed(Keys.UP))
+            controller.up(kitchen);
+        if (Gdx.input.isKeyJustPressed(Keys.DOWN))
+            controller.down(kitchen);
 
         //nao deixa o chef sair das bordas da tela
         if (chef.x < 0)
             chef.x = 0;
         if (chef.x > 1280 - 80)
             chef.x = 1280 - 80;
-        if (chef.y > 720 - 120)
-            chef.y = 720 - 120;
+        if (chef.y > 720 - 80)
+            chef.y = 720 - 80;
         if (chef.y <0)
             chef.y = 0;
 
