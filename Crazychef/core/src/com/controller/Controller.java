@@ -32,7 +32,7 @@ public class Controller{
     }
     public void down(){
 
-        if(Math.round(chef.y/80)-1 > 0 && cozinha.getObjects(Math.round(chef.y/80)-1, Math.round(chef.x/80))==null) {
+        if(Math.round(chef.y/80)-1 >= 0 && cozinha.getObjects(Math.round(chef.y/80)-1, Math.round(chef.x/80))==null) {
             cozinha.setObjects(null, Math.round(chef.y / 80), Math.round(chef.x / 80)); //remove o chefe da posição anterior
             cozinha.setObjects(chef, Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)); //adiciona o chef na nova posição
             chef.y -= 80; //atualiza o atributo y do chef para a nova posição
@@ -40,14 +40,14 @@ public class Controller{
     }
     public void left(){
 
-        if(Math.round(chef.x/80)+1 > 0 && cozinha.getObjects(Math.round(chef.y/80), Math.round(chef.x/80)+1)==null) {
+        if(Math.round(chef.x/80)-1 >= 0 && cozinha.getObjects(Math.round(chef.y/80), Math.round(chef.x/80)-1)==null) {
             cozinha.setObjects(null, Math.round(chef.y / 80), Math.round(chef.x / 80)); //remove o chefe da posição anterior
             cozinha.setObjects(chef, Math.round(chef.y / 80), Math.round(chef.x / 80)-1); //adiciona o chef na nova posição
             chef.x -= 80; //atualiza o atributo y do chef para a nova posição
         }
     }
     public void right(){
-        if(Math.round(chef.x/80)-1 < 16 && cozinha.getObjects(Math.round(chef.y/80), Math.round(chef.x/80)-1) ==null) {
+        if(Math.round(chef.x/80)+1 < 16 && cozinha.getObjects(Math.round(chef.y/80), Math.round(chef.x/80)+1) ==null) {
             cozinha.setObjects(null, Math.round(chef.y / 80), Math.round(chef.x / 80)); //remove o chefe da posição anterior
             cozinha.setObjects(chef, Math.round(chef.y / 80), Math.round(chef.x / 80)+1); //adiciona o chef na nova posição
             chef.x += 80; //atualiza o atributo y do chef para a nova posição
