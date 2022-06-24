@@ -14,7 +14,7 @@ public class Kitchen {
 
         for(int n = 0; n<i; n++){
             for(int m = 0; m<j; m++){
-                floors[n][m] = new Floor();
+                floors[n][m] = new Floor(n, m);
             }
         }
     }

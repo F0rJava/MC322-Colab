@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.models.food.Plate;
 import com.badlogic.gdx.graphics.Texture;
+import com.models.mapdesign.Floor;
 
 import java.util.ArrayList;
 
@@ -80,14 +81,31 @@ public class Chef extends Actors {
         }
     }
 
-    public void hold(Food food){
+    public boolean hold(Food food){
         if(food != null) {
-            if (hand.size() == 0)
+            if (hand.size() == 0) {
                 hand.add(food);
-            else if (hand.get(0) instanceof Plate)
+                return true;
+            } else if (hand.get(0) instanceof Plate) {
                 hand.add(food);
+                return true;
+            }
         }
+        return false;
     }
 
+    public void release(Floor floor){
+        if(floor != null){
+            for(int i = 0; i < hand.size(); i++){
+                hand.get(i).setOrientation(0, 10);
+                hand.get(i).setX(floor.getJ()*80);
+                hand.get(i).setY(floor.getI()*80);
+                floor.addActors(hand.get(i));
+            }
+            for(int i = 0; i < hand.size(); i++){
+                hand.remove(i);
+            }
+        }
+    }
 
 }

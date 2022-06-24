@@ -79,6 +79,14 @@ public class ScreenLevel1 implements Screen{
         Food aux = (Food) kitchen.getFloor(1, 14).getFood();
         game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
 
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 17; j ++){
+                aux = (Food) kitchen.getFloor(i, j).getFood();
+                if(aux != null)
+                    game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+            }
+        }
+
         //desenha o chef na tela
         game.batch.draw(chef.getTexture(), chef.x, chef.y, chef.width, chef.height);
             //desenha as comidas que estão na mão do chef
@@ -113,6 +121,9 @@ public class ScreenLevel1 implements Screen{
         if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
             controller.pickup();
             chef.updateActorsCoordinates();
+        }
+        if(Gdx.input.isKeyJustPressed(Keys.Q)){
+            controller.release();
         }
         game.batch.end();
 

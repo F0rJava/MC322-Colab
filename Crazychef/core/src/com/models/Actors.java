@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Rectangle;
 public class Actors extends Rectangle{
     private Rectangle actor;
 
-
     public Actors(int x, int y){
         this.x = x;
         this.y= y;
