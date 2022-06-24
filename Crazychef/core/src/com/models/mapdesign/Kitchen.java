@@ -1,13 +1,16 @@
 package com.models.mapdesign;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.models.Objects;
 import com.models.mapdesign.Floor;
 
 public class Kitchen {
     private Floor[][] floors;
+    private Texture texture;
 
-    public Kitchen(int i, int j){
+    public Kitchen(int i, int j, Texture texture){
         this.floors = new Floor[i][j];
+        this.texture = texture;
 
         for(int n = 0; n<i; n++){
             for(int m = 0; m<j; m++){
@@ -22,5 +25,8 @@ public class Kitchen {
 
     public void setObjectsInFloor(Objects o, int i, int j){
         floors[i][j].addObjects(o);
+    }
+    public Texture getTexture(){
+        return texture;
     }
 }
