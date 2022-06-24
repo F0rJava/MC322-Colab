@@ -1,7 +1,7 @@
 package com.models.mapdesign;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.models.Objects;
+import com.models.Actors;
 import com.models.mapdesign.Floor;
 
 public class Kitchen {
@@ -23,8 +23,8 @@ public class Kitchen {
         return floors[i][j];
     }
 
-    public void setObjectsInFloor(Objects o, int i, int j){
-        floors[i][j].addObjects(o);
+    public void setObjectsInFloor(Actors o, int i, int j){
+        floors[i][j].addActors(o);
     }
     public Texture getTexture(){
         return texture;

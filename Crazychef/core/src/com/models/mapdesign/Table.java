@@ -1,8 +1,8 @@
 package com.models.mapdesign;
 
-import com.models.Objects;
+import com.models.Actors;
 
-public class Table extends Objects {
+public class Table extends Actors {
     public Table(int x, int y) {
         super(x, y);
         this.width = 80;

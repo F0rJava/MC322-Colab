@@ -1,8 +1,8 @@
 package com.models.mapdesign;
 
-import com.models.Objects;
+import com.models.Actors;
 
-public class Oven extends Objects {
+public class Oven extends Actors {
     public Oven(int x, int y){
         super(x,y);
         this.width = 80;

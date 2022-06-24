@@ -35,7 +35,7 @@ public class ScreenLevel1 implements Screen{
         kitchen = new Kitchen(10, 17, new Texture(Gdx.files.internal("Kitchen/chao_fases.png")));
 
         chef = new Chef(640,320);//pos na matriz [4][8]
-        kitchen.getFloor(Math.round(chef.y/80), Math.round(chef.x/80)).addObjects(chef);
+        kitchen.getFloor(Math.round(chef.y/80), Math.round(chef.x/80)).addActors(chef);
         controller.setChef(chef);
         controller.setKitchen(kitchen);
     }
@@ -52,45 +52,70 @@ public class ScreenLevel1 implements Screen{
         //cria o mapa da sala
         for(int j=1; j<15;j++){
             Table tableV = new Table(80*j,480);
-            kitchen.getFloor(6, j).addObjects(tableV);
+            kitchen.getFloor(6, j).addActors(tableV);
             game.batch.draw(tableImageV,tableV.x, tableV.y, tableV.width,tableV.height);
         }
         Table tableFront1 =  new Table(80, 0);
-        kitchen.getFloor(0, 1). addObjects(tableFront1);
+        kitchen.getFloor(0, 1). addActors(tableFront1);
         game.batch.draw(tableImageFront,tableFront1.x, tableFront1.y, tableFront1.width,tableFront1.height);
         for(int i=1; i<7; i++){
             Table tableH = new Table(80, 80*i);
-            kitchen.getFloor(i, 1). addObjects(tableH);
+            kitchen.getFloor(i, 1). addActors(tableH);
             game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
         }
         Table tableFront2 =  new Table(1120, 0);
-        kitchen.getFloor(0, 1). addObjects(tableFront2);
+        kitchen.getFloor(0, 1). addActors(tableFront2);
         game.batch.draw(tableImageFront,tableFront2.x, tableFront2.y, tableFront2.width,tableFront2.height);
         for(int i=2; i<7; i++){
             Table tableH = new Table(1120, 80*i);
-            kitchen.getFloor(i, 14). addObjects(tableH);
+            kitchen.getFloor(i, 14). addActors(tableH);
             game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
         }
 
-        Generator genBurger = new Generator(1120, 80, "burger", new Texture(Gdx.files.internal("")));
+        Generator genBurger = new Generator(1120, 80, "burger", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
+        kitchen.getFloor(1, 14).addActors(genBurger);
         game.batch.draw(genBurger.getTexture(),genBurger.x, genBurger.y, genBurger.width,genBurger.height);
+        kitchen.getFloor(1, 14).addActors(genBurger.generateFood());
+        Food aux = (Food) kitchen.getFloor(1, 14).getFood();
+        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+
         //desenha o chef na tela
-            game.batch.draw(chef.getTexture(), chef.x, chef.y, chef.width, chef.height);
+        game.batch.draw(chef.getTexture(), chef.x, chef.y, chef.width, chef.height);
+            //desenha as comidas que estão na mão do chef
+            for(int i = 0; i < chef.getHand().size(); i++){
+                if(chef.getHand().get(i).getOrientation()[0] == 0 && chef.getHand().get(i).getOrientation()[1] == 0) {
+                    game.batch.draw(chef.getHand().get(i).getVanishTexture(), chef.getHand().get(i).x,
+                            chef.getHand().get(i).y, chef.getHand().get(i).getWidth(), chef.getHand().get(i).getHeight());
+                }
+                else {
+                    game.batch.draw(chef.getHand().get(i).getBaseTexture(), chef.getHand().get(i).x + chef.getHand().get(i).getOrientation()[0],
+                            chef.getHand().get(i).y + chef.getHand().get(i).getOrientation()[1], chef.getHand().get(i).getWidth(), chef.getHand().get(i).getHeight());
+                }
+            }
 
         //movimento
         if (Gdx.input.isKeyJustPressed(Keys.LEFT)) {
             controller.left();
+            chef.updateActorsCoordinates();
         }
         if (Gdx.input.isKeyJustPressed(Keys.RIGHT)) {
             controller.right();
+            chef.updateActorsCoordinates();
         }
         if (Gdx.input.isKeyJustPressed(Keys.UP)) {
             controller.up();
+            chef.updateActorsCoordinates();
         }
         if (Gdx.input.isKeyJustPressed(Keys.DOWN)) {
             controller.down();
+            chef.updateActorsCoordinates();
+        }
+        if(Gdx.input.isKeyJustPressed(Keys.SPACE)) {
+            controller.pickup();
+            chef.updateActorsCoordinates();
         }
         game.batch.end();
+
 
         //nao deixa o chef sair das bordas da tela
         if (chef.x < 0)

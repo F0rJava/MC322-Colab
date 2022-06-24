@@ -1,16 +1,17 @@
 package com.models;
 
 import com.badlogic.gdx.Gdx;
-import com.models.mapdesign.Plate;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.models.food.Plate;
 import com.badlogic.gdx.graphics.Texture;
 
-import java.io.ObjectStreamException;
+import java.util.ArrayList;
 
-public class Chef extends Objects {
+public class Chef extends Actors {
     //private ArrayList;
     private Plate plate;
+    private ArrayList<Food> hand;
     private boolean[] orientation;
-
     //texturas do chef
     private Texture chefFront;
     private Texture chefBack;
@@ -23,6 +24,7 @@ public class Chef extends Objects {
         this.width = 80;
         this.height = 140;
         this.plate = null;
+        this.hand = new ArrayList<>();
 
         orientation = new boolean[4];
         orientation[0] = true; //chefFront
@@ -58,4 +60,34 @@ public class Chef extends Objects {
         else
             return chefRight;
     }
+
+    public ArrayList<Food> getHand(){
+        return hand;
+    }
+
+    public void updateActorsCoordinates(){
+        for(int i = 0; i < hand.size(); i++){
+            hand.get(i).setX(this.x);
+            hand.get(i).setY(this.y);
+            if(orientation[0])
+                hand.get(i).setOrientation(0, 10);
+            else if (orientation[1])
+                hand.get(i).setOrientation(0, 0);
+            else if (orientation[2])
+                hand.get(i).setOrientation(-20, 20);
+            else if (orientation[3])
+                hand.get(i).setOrientation(20, 20);
+        }
+    }
+
+    public void hold(Food food){
+        if(food != null) {
+            if (hand.size() == 0)
+                hand.add(food);
+            else if (hand.get(0) instanceof Plate)
+                hand.add(food);
+        }
+    }
+
+
 }

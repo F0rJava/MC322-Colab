@@ -1,10 +1,11 @@
 package com.models.mapdesign;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.models.Objects;
+import com.models.Actors;
+import com.models.Food;
 import com.models.food.Burger;
 
-public class Generator extends Objects {
+public class Generator extends Actors {
     private String food;
     private Texture texture;
 
@@ -16,7 +17,7 @@ public class Generator extends Objects {
         this.texture = texture;
     }
 
-    public Objects generateFood(){
+    public Food generateFood(){
         //if(food.equalsIgnoreCase("Burger"))
             return new Burger(Math.round(this.x), Math.round(this.y));
     }

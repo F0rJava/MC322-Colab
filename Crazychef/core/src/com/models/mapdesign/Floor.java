@@ -1,35 +1,40 @@
 package com.models.mapdesign;
 
-import com.models.Objects;
+import com.models.Actors;
+import com.models.Food;
+
+import java.util.ArrayList;
 
 public class Floor {
-    private Objects[] objects;
+    private ArrayList<Actors> actors;
 
     public Floor(){
-        this.objects = new Objects[2];
+        this.actors = new ArrayList<>();
     }
 
-    public Objects[] getObjects(){
-        return objects;
+    public ArrayList<Actors> getActors(){
+        return actors;
     }
 
-    public void addObjects(Objects o){
-        if(objects[0] == null)
-            objects[0] = o;
-        else
-            objects[1] = o;
+    public void addActors(Actors a){
+        actors.add(a);
     }
 
-    public boolean dontHaveObjects(){
-        if(objects[0] == null && objects[1] == null)
+    public boolean dontHaveActors(){
+        if(actors.size() == 0)
             return true;
         return false;
     }
 
-    public void removeObjects(Objects o){
-        if(objects[0] == o)
-            objects[0] = null;
-        else if (objects[1] == o)
-            objects[1] = null;
+    public void removeActors(Actors o){
+        actors.remove(o);
+    }
+
+    public Actors getFood(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof Food)
+                return  actors.get(i);
+        }
+        return null;
     }
 }
