@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.Input.*;
+import com.models.mapdesign.Generator;
 import com.models.mapdesign.Kitchen;
 import com.models.mapdesign.Table;
 
@@ -14,11 +15,6 @@ import com.models.mapdesign.Table;
 public class ScreenLevel1 implements Screen{
     final Crazychef game;
     private Controller controller;
-    private Texture chefFront;
-    private Texture chefBack;
-    private Texture chefLeft;
-    private Texture chefRight;
-    private Texture background;
     private Texture tableImageH;
     private Texture tableImageV;
     private Texture tableImageFront;
@@ -30,19 +26,13 @@ public class ScreenLevel1 implements Screen{
         this.game = game;
         this.controller = controller;
 
-        chefFront = new Texture(Gdx.files.internal("Chef/chefFront.png"));//textura do chef
-        chefBack = new Texture(Gdx.files.internal("Chef/chefBack.png"));
-        chefRight = new Texture(Gdx.files.internal("Chef/chefRight.png"));
-        chefLeft = new Texture(Gdx.files.internal("Chef/chefLeft.png"));
-
-        background = new Texture(Gdx.files.internal("Kitchen/chao_fases.png"));//textura da fase
         tableImageH = new Texture(Gdx.files.internal("Kitchen/tableH.png"));
         tableImageV = new Texture(Gdx.files.internal("Kitchen/tableV.png"));
         tableImageFront = new Texture(Gdx.files.internal("Kitchen/tableFront.png"));
 
         camera = new OrthographicCamera();//camera
         camera.setToOrtho(false, 1280, 720);
-        kitchen = new Kitchen(10, 17);
+        kitchen = new Kitchen(10, 17, new Texture(Gdx.files.internal("Kitchen/chao_fases.png")));
 
         chef = new Chef(640,320);//pos na matriz [4][8]
         kitchen.getFloor(Math.round(chef.y/80), Math.round(chef.x/80)).addObjects(chef);
@@ -57,7 +47,7 @@ public class ScreenLevel1 implements Screen{
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin(); //inicia a renderização
-        game.batch.draw(background, 0,0, 1280, 720);//imagem do fundo
+        game.batch.draw(kitchen.getTexture(), 0,0, 1280, 720);//imagem do fundo
 
         //cria o mapa da sala
         for(int j=1; j<15;j++){
@@ -65,7 +55,6 @@ public class ScreenLevel1 implements Screen{
             kitchen.getFloor(6, j).addObjects(tableV);
             game.batch.draw(tableImageV,tableV.x, tableV.y, tableV.width,tableV.height);
         }
-
         Table tableFront1 =  new Table(80, 0);
         kitchen.getFloor(0, 1). addObjects(tableFront1);
         game.batch.draw(tableImageFront,tableFront1.x, tableFront1.y, tableFront1.width,tableFront1.height);
@@ -74,25 +63,21 @@ public class ScreenLevel1 implements Screen{
             kitchen.getFloor(i, 1). addObjects(tableH);
             game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
         }
-
         Table tableFront2 =  new Table(1120, 0);
         kitchen.getFloor(0, 1). addObjects(tableFront2);
         game.batch.draw(tableImageFront,tableFront2.x, tableFront2.y, tableFront2.width,tableFront2.height);
-        for(int i=1; i<7; i++){
+        for(int i=2; i<7; i++){
             Table tableH = new Table(1120, 80*i);
             kitchen.getFloor(i, 14). addObjects(tableH);
             game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
         }
 
-        if(chef.getOrientation(0))
-            game.batch.draw(chefFront, chef.x, chef.y,chef.width,chef.height);
-        else if(chef.getOrientation(1))
-            game.batch.draw(chefBack, chef.x, chef.y, chef.width, chef.height);
-        else if(chef.getOrientation(2))
-            game.batch.draw(chefLeft, chef.x, chef.y, chef.width, chef.height);
-        else if(chef.getOrientation(3))
-            game.batch.draw(chefRight, chef.x, chef.y, chef.width, chef.height);
+        Generator genBurger = new Generator(1120, 80, "burger", new Texture(Gdx.files.internal("")));
+        game.batch.draw(genBurger.getTexture(),genBurger.x, genBurger.y, genBurger.width,genBurger.height);
+        //desenha o chef na tela
+            game.batch.draw(chef.getTexture(), chef.x, chef.y, chef.width, chef.height);
 
+        //movimento
         if (Gdx.input.isKeyJustPressed(Keys.LEFT)) {
             controller.left();
         }
@@ -137,8 +122,6 @@ public class ScreenLevel1 implements Screen{
 
     @Override
     public void dispose() {
-        chefFront.dispose();
-        background.dispose();
     }
 
     @Override
