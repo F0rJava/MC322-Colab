@@ -8,6 +8,6 @@ import com.models.Food;
 public class Plate extends Food {
 
     public Plate(int x, int y) {
-        super(x, y, new Texture(Gdx.files.internal("Food/Level1/plate.png")));
+        super(x, y, new Texture(Gdx.files.internal("Food/plate.png")));
     }
 }

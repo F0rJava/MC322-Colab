@@ -76,6 +76,7 @@ public class Controller{
         if(chef.getOrientation(0)){
             if(Math.round(chef.y/80)-1 >= 0) {
                 aux1 = (Food) kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood();
+
                 if(chef.hold(aux1))
                     kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).removeActors(aux1);
             }

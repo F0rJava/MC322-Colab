@@ -72,6 +72,7 @@ public class ScreenLevel1 implements Screen{
             game.batch.draw(tableImageH,tableH.x, tableH.y, tableH.width,tableH.height);
         }
 
+        //Gerador de hamburguer
         Generator genBurger = new Generator(1120, 80, "burger", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
         kitchen.getFloor(1, 14).addActors(genBurger);
         game.batch.draw(genBurger.getTexture(),genBurger.x, genBurger.y, genBurger.width,genBurger.height);
@@ -79,6 +80,15 @@ public class ScreenLevel1 implements Screen{
         Food aux = (Food) kitchen.getFloor(1, 14).getFood();
         game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
 
+        //Gerador de prato
+        Generator genPlate = new Generator(80, 160, "plate", new Texture(Gdx.files.internal("Kitchen/tableH.png")));
+        kitchen.getFloor(2, 1).addActors(genPlate);
+        game.batch.draw(genPlate.getTexture(), genPlate.x, genPlate.y ,genPlate.width, genPlate.height);
+        kitchen.getFloor(2, 1).addActors(genPlate.generateFood());
+        aux = (Food) kitchen.getFloor(2, 1).getFood();
+        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+
+        //desenhando as comidas que estão pelo mapa
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 17; j ++){
                 aux = (Food) kitchen.getFloor(i, j).getFood();
