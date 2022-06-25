@@ -17,21 +17,8 @@ import jdk.tools.jlink.internal.Platform;
 public class Controller{
     private Chef chef;
     private Kitchen kitchen;
+    private Integer levelTime;
     private float timeCount;
-    private Integer worldTimer;
-
-    private Label timeLabel;
-    private Label countdownLabel;
-
-    public Controller(SpriteBatch sb){
-        worldTimer = 300;
-        timeCount = 0;
-
-        countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-
-    }
-
 
     //movimenta o chef, checando se não há colisões com outros objetos
     public void up(){
@@ -139,7 +126,21 @@ public class Controller{
         this.kitchen = cozinha;
     }
 
-    public void setTimer() {
+    public void setLevelTime(int sec) {
+        this.levelTime = sec;
+    }
 
+    public Integer getLevelTime(){
+        return this.levelTime;
+    }
+
+    public void updateTime(float dt){
+        timeCount+=dt;
+        if (levelTime>0){
+            if(timeCount>=1){
+                levelTime--;
+                timeCount = 0;
+            }
+        }
     }
 }

@@ -8,12 +8,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Crazychef extends Game {
 	//renderiza as texturas
 	public SpriteBatch batch;
+	//renderiza texto na tela
+	public BitmapFont font;
 	//controle do jogo
 	public Controller controller;
 
 	public void create() {
 		batch = new SpriteBatch();
-		controller = new Controller(batch);
+		font = new BitmapFont();
+		controller = new Controller();
 		this.setScreen(new MainMenuScreen(this, controller));
 	}
 

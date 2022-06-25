@@ -1,5 +1,9 @@
 package com.crazychef.game;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.controller.Controller;
 import com.models.*;
 import com.badlogic.gdx.Gdx;
@@ -7,9 +11,10 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.Input.*;
-import com.models.mapdesign.Generator;
-import com.models.mapdesign.Kitchen;
-import com.models.mapdesign.Table;
+import com.badlogic.gdx.utils.TimeUtils;
+import com.models.mapdesign.*;
+
+import javax.swing.*;
 
 
 public class ScreenLevel1 implements Screen{
@@ -25,6 +30,7 @@ public class ScreenLevel1 implements Screen{
     public ScreenLevel1(final Crazychef game, Controller controller){
         this.game = game;
         this.controller = controller;
+        controller.setLevelTime(180); //tempo de duração da fase (180s)
 
         tableImageH = new Texture(Gdx.files.internal("Kitchen/tableH.png"));
         tableImageV = new Texture(Gdx.files.internal("Kitchen/tableV.png"));
@@ -43,12 +49,10 @@ public class ScreenLevel1 implements Screen{
     @Override
     public void render(float delta){
         camera.update();
-        controller.setTimer();
+        controller.updateTime(delta);//atualiza o tempo da fase para o controle
         game.batch.setProjectionMatrix(camera.combined);
-
         game.batch.begin(); //inicia a renderização
         game.batch.draw(kitchen.getTexture(), 0,0, 1280, 720);//imagem do fundo
-
         //cria o mapa da sala
         for(int j=1; j<15;j++){
             Table tableV = new Table(80*j,480);
@@ -87,6 +91,10 @@ public class ScreenLevel1 implements Screen{
         kitchen.getFloor(2, 1).addActors(genPlate.generateFood());
         aux = (Food) kitchen.getFloor(2, 1).getFood();
         game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+
+        //posiciona o fogão
+        Oven oven = new Oven(640,560);
+        kitchen.getFloor(7,8).addActors(oven);
 
         //desenhando as comidas que estão pelo mapa
         for(int i = 0; i < 9; i++){
@@ -135,6 +143,10 @@ public class ScreenLevel1 implements Screen{
         if(Gdx.input.isKeyJustPressed(Keys.Q)){
             controller.release();
         }
+        if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) game.setScreen(new MainMenuScreen(game, this.controller));;
+
+        //desenha o tempo da fase
+        game.font.draw(game.batch, String.valueOf(controller.getLevelTime()),100, 100);
         game.batch.end();
 
 

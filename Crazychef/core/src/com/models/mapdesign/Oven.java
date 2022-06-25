@@ -8,4 +8,8 @@ public class Oven extends Actors {
         this.width = 80;
         this.height = 80;
     }
+
+    public void startCooking(){
+
+    }
 }
