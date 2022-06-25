@@ -60,14 +60,21 @@ public class ScreenLevel1 implements Screen{
 
         //cria o mapa da sala
         Table auxTable = null;
-        for(int j=1; j<15;j++){
+        for(int j=1; j<6;j++){
             if(kitchen.getFloor(6, j).dontHaveActors()) {
                 Table tableV = new Table(80 * j, 480);
                 kitchen.getFloor(6, j).addActors(tableV);
             }
             auxTable = (Table) kitchen.getFloor(6, j).getTable();
             game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-
+        }
+        for(int j=7; j<15;j++){
+            if(kitchen.getFloor(6, j).dontHaveActors()) {
+                Table tableV = new Table(80 * j, 480);
+                kitchen.getFloor(6, j).addActors(tableV);
+            }
+            auxTable = (Table) kitchen.getFloor(6, j).getTable();
+            game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
         }
         if(kitchen.getFloor(0, 1).dontHaveActors()) {
             Table tableFront1 = new Table(80, 0);
@@ -137,6 +144,15 @@ public class ScreenLevel1 implements Screen{
         }
         aux = (Food) kitchen.getFloor(2, 1).getFood();
         game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+
+        //Lixeira
+        if(kitchen.getFloor(6, 6).dontHaveActors()){
+            Trash trash = new Trash(80*6, 80*6, new Texture(Gdx.files.internal("Kitchen/trashImage.png")), kitchen.getFloor(6, 6));
+            kitchen.getFloor(6, 6).addActors(trash);
+        }
+        Trash auxT = (Trash) kitchen.getFloor(6, 6).getTrash();
+        auxT.deleteFood();
+        game.batch.draw(auxT.getTexture(),auxT.x, auxT.y, aux.width, aux.height);
 
         //posiciona o fogão
         //Oven oven = new Oven(640,560);

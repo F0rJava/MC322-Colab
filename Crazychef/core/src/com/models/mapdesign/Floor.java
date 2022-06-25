@@ -59,6 +59,14 @@ public class Floor {
         return null;
     }
 
+    public Actors getTrash(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof Trash)
+                return actors.get(i);
+        }
+        return null;
+    }
+
     public int getI(){
         return this.i;
     }
