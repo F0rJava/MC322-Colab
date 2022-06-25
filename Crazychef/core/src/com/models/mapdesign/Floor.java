@@ -2,6 +2,7 @@ package com.models.mapdesign;
 
 import com.models.Actors;
 import com.models.Food;
+import com.models.food.Plate;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,22 @@ public class Floor {
         for(int i = 0; i < actors.size(); i++){
             if(actors.get(i) instanceof Food)
                 return  actors.get(i);
+        }
+        return null;
+    }
+
+    public Actors getGen(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof Generator)
+                return actors.get(i);
+        }
+        return null;
+    }
+
+    public Actors getTable(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof Table)
+                return actors.get(i);
         }
         return null;
     }

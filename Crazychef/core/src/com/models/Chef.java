@@ -86,7 +86,7 @@ public class Chef extends Actors {
             if (hand.size() == 0) {
                 hand.add(food);
                 return true;
-            } else if (hand.get(0) instanceof Plate) {
+            } else if (hand.get(0) instanceof Plate && !(food instanceof Plate)) {
                 hand.add(food);
                 return true;
             }
@@ -102,8 +102,9 @@ public class Chef extends Actors {
                 hand.get(i).setY(floor.getI()*80);
                 floor.addActors(hand.get(i));
             }
-            for(int i = 0; i < hand.size(); i++){
-                hand.remove(i);
+            int aux = hand.size();
+            for(int i = 0; i < aux; i++){
+                hand.remove(0);
             }
         }
     }

@@ -13,6 +13,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import jdk.tools.jlink.internal.Platform;
 
+import java.util.ArrayList;
+
 //classe responsavel por controlar as views do jogo e os models
 public class Controller{
     private Chef chef;
@@ -59,34 +61,67 @@ public class Controller{
     }
 
     public void pickup(){
-        Food aux1 = null;
+        ArrayList<Actors> aux1 = null;
+        Food aux2 = null;
+
         if(chef.getOrientation(0)){
             if(Math.round(chef.y/80)-1 >= 0) {
-                aux1 = (Food) kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood();
-
-                if(chef.hold(aux1))
-                    kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).removeActors(aux1);
+                aux1 = kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getActors();
+                for(int i = 0; i < aux1.size(); i++){
+                    if(aux1.get(i) instanceof Food){
+                        aux2 = (Food) aux1.get(i);
+                        if(chef.hold(aux2)) {
+                            kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).removeActors(aux2);
+                            i--;
+                        }
+                    }
+                }
             }
         }
+
         else if (chef.getOrientation(1)){
             if(Math.round(chef.y/80)+1 < 9) {
-                aux1 = (Food) kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round((chef.x / 80))).getFood();
-                if(chef.hold(aux1))
-                    kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).removeActors(aux1);
+                aux1 = kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round((chef.x / 80))).getActors();
+                for(int i = 0; i < aux1.size(); i++){
+                    if(aux1.get(i) instanceof  Food){
+                        aux2 = (Food) aux1.get(i);
+                        if(chef.hold(aux2)) {
+                            kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).removeActors(aux2);
+                            i--;
+                        }
+                    }
+                }
             }
         }
+
         else if (chef.getOrientation(2)) {
             if(Math.round(chef.x/80)-1 >= 0) {
-                aux1 = (Food) kitchen.getFloor(Math.round(chef.y / 80), Math.round((chef.x / 80)) - 1).getFood();
-                if(chef.hold(aux1))
-                    kitchen.getFloor(Math.round(chef.y / 80) , Math.round(chef.x / 80) - 1).removeActors(aux1);
+                aux1 = kitchen.getFloor(Math.round(chef.y / 80), Math.round((chef.x / 80)) - 1).getActors();
+                for(int i = 0; i < aux1.size(); i++){
+                    if(aux1.get(i) instanceof  Food){
+                        aux2 = (Food) aux1.get(i);
+                        if(chef.hold(aux2)) {
+                            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).removeActors(aux2);
+                            i--;
+                        }
+                    }
+                }
             }
         }
+
         else {
             if (Math.round(chef.x / 80) + 1 < 16) {
-                aux1 = (Food) kitchen.getFloor(Math.round(chef.y / 80), Math.round((chef.x / 80)) + 1).getFood();
-                if(chef.hold(aux1))
-                    kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).removeActors(aux1);
+                aux1 = kitchen.getFloor(Math.round(chef.y / 80), Math.round((chef.x / 80)) + 1).getActors();
+
+                for(int i = 0; i < aux1.size(); i++){
+                    if(aux1.get(i) instanceof  Food){
+                        aux2 = (Food) aux1.get(i);
+                        if(chef.hold(aux2)) {
+                            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).removeActors(aux2);
+                            i--;
+                        }
+                    }
+                }
             }
         }
         chef.updateActorsCoordinates();
