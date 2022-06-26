@@ -52,7 +52,10 @@ public abstract class Food extends Actors{
         this.isCooked = cooked;
     }
 
-    public void updateTime(float dt){
+    public void updateTime(float dt){}
 
+    //retorna a prioridade da comida para ordenação
+    public Integer getPrio(){
+        return prio;
     }
 }

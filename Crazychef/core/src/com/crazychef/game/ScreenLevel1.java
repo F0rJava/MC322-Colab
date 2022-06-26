@@ -291,6 +291,12 @@ public class ScreenLevel1 implements Screen{
             if(orderController.getOrders(i)!= null){
                 game.batch.draw(orderController.getOrders(i).getBackGround(), orderController.getOrders(i).x, orderController.getOrders(i).y,
                         orderController.getOrders(i).width, orderController.getOrders(i).height);
+                for(int j=0; j<4; j++){
+                    if(orderController.getOrders(i).getFood(j)!=null){
+                        game.batch.draw(orderController.getOrders(i).getFood(j).getBaseTexture(), orderController.getOrders(i).getFood(j).x,
+                                orderController.getOrders(i).getFood(j).y, orderController.getOrders(i).getFood(j).width, orderController.getOrders(i).getFood(j).height);
+                    }
+                }
             }
         }
 
