@@ -83,6 +83,14 @@ public class Floor {
         return this.j;
     }
 
+    public Actors getCutBoard(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof CutBoard)
+                return actors.get(i);
+        }
+        return null;
+    }
+
     public void insertSorted(Food food){
         Food aux;
         int aux2 = actors.size();

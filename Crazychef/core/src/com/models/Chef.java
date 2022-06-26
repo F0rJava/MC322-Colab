@@ -19,6 +19,7 @@ public class Chef extends Actors {
     private Texture chefBack;
     private Texture chefLeft;
     private Texture chefRight;
+    private boolean canMove = true;
 
     public Chef(int x, int y) {
         super(x,y);//posição onde o chefe inicia
@@ -135,4 +136,9 @@ public class Chef extends Actors {
         }
     }
 
+    public void setCanMove(Boolean b){
+        this.canMove = b;
+    }
+
+    public boolean getCanMove(){return canMove;}
 }

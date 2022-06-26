@@ -5,6 +5,7 @@ import com.models.Actors;
 import com.models.Food;
 import com.models.food.Bun;
 import com.models.food.Burger;
+import com.models.food.Lettuce;
 import com.models.food.Plate;
 
 public class Generator extends Actors {
@@ -24,6 +25,8 @@ public class Generator extends Actors {
             return new Burger(Math.round(this.x), Math.round(this.y));
         else if (food.equalsIgnoreCase("Bun"))
             return new Bun(Math.round(this.x), Math.round(this.y));
+        else if(food.equalsIgnoreCase("Lettuce"))
+            return new Lettuce(Math.round(this.x), Math.round(this.y));
         else
             return new Plate(Math.round(this.x), Math.round(this.y));
     }

@@ -9,6 +9,8 @@ public abstract class Food extends Actors{
     protected Texture vanish;
     protected boolean cookable = false;
     protected boolean isCooked = false;
+    protected boolean cuttable = false;
+    protected boolean isCut = false;
     protected Integer prio;
 
     public Food(int x, int y, Texture baseTexture){
@@ -52,6 +54,11 @@ public abstract class Food extends Actors{
     public void setCooked(boolean cooked){
         this.isCooked = cooked;
     }
+
+    public boolean getCuttable(){return this.cuttable;}
+
+    public boolean getCut(){return this.isCut;}
+    public void setCut(){this.isCut = true;}
 
     public void updateTime(float dt){}
 

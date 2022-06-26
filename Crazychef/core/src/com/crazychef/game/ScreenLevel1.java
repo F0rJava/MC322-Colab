@@ -82,7 +82,7 @@ public class ScreenLevel1 implements Screen{
         game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
 
         //mesas que estão na horizontal, na matriz de [6][9] ate [6][15]
-        for(int j=9; j<15;j++){
+        for(int j=10; j<15;j++){
             if(kitchen.getFloor(6, j).dontHaveActors()) {
                 Table tableV = new Table(80 * j, 480);
                 kitchen.getFloor(6, j).addActors(tableV);
@@ -129,13 +129,6 @@ public class ScreenLevel1 implements Screen{
         auxTable = (Table) kitchen.getFloor(0, 14).getTable();
         game.batch.draw(tableImageFront, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
 
-        if(kitchen.getFloor(2, 14).dontHaveActors()) {
-            Table tableH = new Table(1120, 80 * 2);
-            kitchen.getFloor(2, 14).addActors(tableH);
-        }
-        auxTable = (Table) kitchen.getFloor(2, 14).getTable();
-        game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-
         for(int i=4; i<7; i++){
             if(kitchen.getFloor(i, 14).dontHaveActors()) {
                 Table tableH = new Table(1120, 80 * i);
@@ -180,18 +173,34 @@ public class ScreenLevel1 implements Screen{
 
         //Gerador de pao
         if(kitchen.getFloor(3, 14).dontHaveActors()) {
-            Generator genPlate = new Generator(80*14, 80*3, "bun", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
-            kitchen.getFloor(3, 14).addActors(genPlate);
+            Generator genBun = new Generator(80*14, 80*3, "bun", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
+            kitchen.getFloor(3, 14).addActors(genBun);
         }
         auxGen = (Generator) kitchen.getFloor(3, 14).getGen();
         game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
 
         //Gera um outro pao caso nao tenha
         if(kitchen.getFloor(3, 14).getFood() == null) {
-            Generator auxGenPlate = (Generator) kitchen.getFloor(3,14).getGen();
-            kitchen.getFloor(3, 14).addActors(auxGenPlate.generateFood());
+            Generator auxGenBun = (Generator) kitchen.getFloor(3,14).getGen();
+            kitchen.getFloor(3, 14).addActors(auxGenBun.generateFood());
         }
         aux = (Food) kitchen.getFloor(3, 14).getFood();
+        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+
+        //Gerador de alface
+        if(kitchen.getFloor(2, 14).dontHaveActors()) {
+            Generator genLettuce = new Generator(80*14, 80*2, "lettuce", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
+            kitchen.getFloor(2, 14).addActors(genLettuce);
+        }
+        auxGen = (Generator) kitchen.getFloor(2, 14).getGen();
+        game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
+
+        //Gera um outro alface caso nao tenha
+        if(kitchen.getFloor(2, 14).getFood() == null) {
+            Generator auxGenLettuce = (Generator) kitchen.getFloor(2,14).getGen();
+            kitchen.getFloor(2, 14).addActors(auxGenLettuce.generateFood());
+        }
+        aux = (Food) kitchen.getFloor(2, 14).getFood();
         game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
 
         //Lixeira
@@ -223,9 +232,24 @@ public class ScreenLevel1 implements Screen{
         auxO = (Oven) kitchen.getFloor(4, 1).getOven();
         game.batch.draw(auxO.getTexture(),auxO.x, auxO.y, auxO.width, auxO.height);
         aux = (Food) kitchen.getFloor(4, 1).getFood();
-        if(aux != null && aux.getCookable()){
-            auxO.startCooking(aux, delta);
+        auxO.startCooking(aux, delta);
+
+        //Tabua de cortar
+        if(kitchen.getFloor(6, 9).dontHaveActors()) {
+            CutBoard cutBoard= new CutBoard(80*9, 80*6, new Texture(Gdx.files.internal("Kitchen/cuttingBoard.jpg")));
+            kitchen.getFloor(6, 9).addActors(cutBoard);
         }
+        CutBoard auxC = (CutBoard) kitchen.getFloor(6, 9).getCutBoard();
+        game.batch.draw(auxC.getTexture(),auxC.x, auxC.y, auxC.width, auxC.height);
+        aux = (Food) kitchen.getFloor(6, 9).getFood();
+        if(aux != null && aux.getCuttable()) {
+            if(!aux.getCut())
+                chef.setCanMove(false);
+            else
+                chef.setCanMove(true);
+            auxC.startCutting(aux, delta);
+        }
+
 
         //desenhando as comidas que estão pelo mapa
         ArrayList<Actors> auxA;

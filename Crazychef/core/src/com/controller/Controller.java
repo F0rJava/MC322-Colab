@@ -15,39 +15,47 @@ public class Controller{
 
     //movimenta o chef, checando se não há colisões com outros objetos
     public void up(){
-        chef.setOrientation(1);
-        chef.updateActorsCoordinates();
-        if(Math.round(chef.y/80)+1 < 9 && kitchen.getFloor(Math.round(chef.y/80)+1, Math.round(chef.x/80)).dontHaveActors()){
-            kitchen.getFloor(Math.round(chef.y/80), Math.round(chef.x/80)).removeActors(chef); //remove o chefe da posição anterior
-            kitchen.getFloor(Math.round(chef.y/80)+1, Math.round(chef.x/80)).addActors(chef); //adiciona o chef na nova posição
-            chef.y += 80; //atualiza o atributo y do chef para a nova posição
+        if(chef.getCanMove()) {
+            chef.setOrientation(1);
+            chef.updateActorsCoordinates();
+            if (Math.round(chef.y / 80) + 1 < 9 && kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).dontHaveActors()) {
+                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).addActors(chef); //adiciona o chef na nova posição
+                chef.y += 80; //atualiza o atributo y do chef para a nova posição
+            }
         }
     }
     public void down(){
-        chef.setOrientation(0);
-        chef.updateActorsCoordinates();
-        if(Math.round(chef.y/80)-1 >= 0 && kitchen.getFloor(Math.round(chef.y/80)-1, Math.round(chef.x/80)).dontHaveActors()) {
-            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
-            kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).addActors(chef); //adiciona o chef na nova posição
-            chef.y -= 80; //atualiza o atributo y do chef para a nova posição
+        if(chef.getCanMove()) {
+            chef.setOrientation(0);
+            chef.updateActorsCoordinates();
+            if (Math.round(chef.y / 80) - 1 >= 0 && kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).dontHaveActors()) {
+                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).addActors(chef); //adiciona o chef na nova posição
+                chef.y -= 80; //atualiza o atributo y do chef para a nova posição
+            }
         }
     }
     public void left(){
-        chef.setOrientation(2);
-        chef.updateActorsCoordinates();
-        if(Math.round(chef.x/80)-1 >= 0 && kitchen.getFloor(Math.round(chef.y/80), Math.round(chef.x/80)-1).dontHaveActors()) {
-            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
-            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)-1).addActors(chef); //adiciona o chef na nova posição
-            chef.x -= 80; //atualiza o atributo x do chef para a nova posição
+        if(chef.getCanMove()){
+            chef.setOrientation(2);
+            chef.updateActorsCoordinates();
+            if (Math.round(chef.x / 80) - 1 >= 0 && kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).dontHaveActors()) {
+                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).addActors(chef); //adiciona o chef na nova posição
+                chef.x -= 80; //atualiza o atributo x do chef para a nova posição
+            }
         }
     }
     public void right(){
-        chef.setOrientation(3);
-        chef.updateActorsCoordinates();
-        if(Math.round(chef.x/80)+1 < 16 && kitchen.getFloor(Math.round(chef.y/80), Math.round(chef.x/80)+1).dontHaveActors()) {
-            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
-            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)+1).addActors(chef); //adiciona o chef na nova posição
-            chef.x += 80; //atualiza o atributo x do chef para a nova posição
+        if(chef.getCanMove()) {
+            chef.setOrientation(3);
+            chef.updateActorsCoordinates();
+            if (Math.round(chef.x / 80) + 1 < 16 && kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).dontHaveActors()) {
+                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).addActors(chef); //adiciona o chef na nova posição
+                chef.x += 80; //atualiza o atributo x do chef para a nova posição
+            }
         }
     }
 
@@ -55,9 +63,9 @@ public class Controller{
         if (chef.getHand().size() == 0)
             return true;
         else if(chef.getHand().size() >= 1 && chef.getHand().get(0) instanceof Plate){
-            if(food.getCookable() && food.getCooked())
+            if((food.getCookable() && food.getCooked()) || (food.getCuttable() && food.getCut()))
                 return true;
-            else if(!food.getCookable())
+            else if(!food.getCookable() && !food.getCuttable())
                 return true;
         }
         return false;
@@ -71,8 +79,13 @@ public class Controller{
                 else if (!(food instanceof Plate))
                     return true;
                 return false;
-            }
-            else if(chef.getHand().get(0) instanceof Plate && food instanceof Plate)
+            } else if (chef.getHand().get(0).getCuttable()) {
+                if(chef.getHand().get(0).getCut())
+                    return true;
+                else if (!(food instanceof Plate))
+                    return true;
+                return false;
+            } else if(chef.getHand().get(0) instanceof Plate && food instanceof Plate)
                 return false;
             else
                 return true;
