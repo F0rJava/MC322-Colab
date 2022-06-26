@@ -7,13 +7,36 @@ import com.models.Food;
 import org.w3c.dom.Text;
 
 public class Burger extends Food {
-    Integer timeUntilCooked = 10;
-    Integer timeToBurn = 20;
+    private Integer timeUntilCooked;
+    private Integer timeToBurn;
+    private float timeCount;
     public Burger(int x, int y){
         super(x,y, new Texture(Gdx.files.internal("Food/Level1/rawBurger.png")));
+        this.cookable = true;
+        this.timeToBurn = 20;
+        this.timeUntilCooked = 10;
     }
 
-    public void isCooking(float dt){
-
+    public void updateTime(float dt){
+        timeCount+=dt;
+        if (timeUntilCooked>0){
+            if(timeCount>=1){
+                timeUntilCooked--;
+                timeToBurn--;
+                timeCount = 0;
+            }
+        }
+        if(timeUntilCooked == 0){
+            this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/cookedBurger.png")));
+        }
+        if(timeUntilCooked == 0 && timeToBurn == 0){
+            this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/toastedBurger.png")));
+        }
+        if(timeToBurn>0){
+            if(timeCount>=1){
+                timeToBurn--;
+                timeCount = 0;
+            }
+        }
     }
 }

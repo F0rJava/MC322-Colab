@@ -96,6 +96,7 @@ public class Chef extends Actors {
 
     public void release(Floor floor){
         if(floor != null){
+            //solta a comida em qualquer lugar do mapa
             for(int i = 0; i < hand.size(); i++){
                 hand.get(i).setOrientation(0, 10);
                 hand.get(i).setX(floor.getJ()*80);

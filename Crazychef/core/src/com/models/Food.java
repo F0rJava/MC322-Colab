@@ -7,6 +7,7 @@ public class Food extends Actors{
     protected int[] orientation;
     protected Texture baseTexture;
     protected Texture vanish;
+    protected boolean cookable = false;
 
     public Food(int x, int y, Texture baseTexture){
         super(x, y);
@@ -26,6 +27,10 @@ public class Food extends Actors{
         return orientation;
     }
 
+    public boolean getCookable(){
+        return this.cookable;
+    }
+
     public void setBaseTexture(Texture nbaseTexture){
         this.baseTexture = nbaseTexture;
     }
@@ -36,5 +41,9 @@ public class Food extends Actors{
 
     public Texture getBaseTexture(){
         return baseTexture;
+    }
+
+    public void updateTime(float dt){
+
     }
 }

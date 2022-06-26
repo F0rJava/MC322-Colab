@@ -9,7 +9,7 @@ public class Oven extends Actors {
         this.height = 80;
     }
 
-    public void startCooking(){
-
+    public void startCooking(Food food, float dt){
+        food.updateTime(dt);
     }
 }

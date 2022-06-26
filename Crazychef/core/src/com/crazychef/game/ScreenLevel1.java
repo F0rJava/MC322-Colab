@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.controller.Controller;
+import com.controller.OrderController;
 import com.models.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 public class ScreenLevel1 implements Screen{
     final Crazychef game;
     private Controller controller;
+    private OrderController orderController;
     private Texture tableImageH;
     private Texture tableImageV;
     private Texture tableImageFront;
@@ -34,6 +36,7 @@ public class ScreenLevel1 implements Screen{
     public ScreenLevel1(final Crazychef game, Controller controller){
         this.game = game;
         this.controller = controller;
+        this.orderController = new OrderController(kitchen);
         controller.setLevelTime(180); //tempo de duração da fase (180s)
 
         tableImageH = new Texture(Gdx.files.internal("Kitchen/tableH.png"));
@@ -136,8 +139,9 @@ public class ScreenLevel1 implements Screen{
             kitchen.getFloor(2, 1).addActors(genPlate);
         }
         auxGen = (Generator) kitchen.getFloor(2, 1).getGen();
-            game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
+        game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
 
+        //Gera um outro prato caso nao tenha
         if(kitchen.getFloor(2, 1).getFood() == null) {
             Generator auxGenPlate = (Generator) kitchen.getFloor(2,1).getGen();
             kitchen.getFloor(2, 1).addActors(auxGenPlate.generateFood());
@@ -154,9 +158,29 @@ public class ScreenLevel1 implements Screen{
         auxT.deleteFood();
         game.batch.draw(auxT.getTexture(),auxT.x, auxT.y, aux.width, aux.height);
 
-        //posiciona o fogão
-        //Oven oven = new Oven(640,560);
-        //kitchen.getFloor(7,8).addActors(oven);
+        //Fogão Horizontal
+        if(kitchen.getFloor(6, 8).dontHaveActors()) {
+            Oven oven = new Oven(640, 80*6, new Texture(Gdx.files.internal("Kitchen/ovenH.png")));
+            kitchen.getFloor(6, 8).addActors(oven);
+        }
+        Oven auxO = (Oven) kitchen.getFloor(6, 8).getOven();
+        game.batch.draw(auxO.getTexture(),auxO.x, auxO.y, auxO.width, auxO.height);
+        aux = (Food) kitchen.getFloor(6, 8).getFood();
+        if(aux != null && aux.getCookable()){
+            auxO.startCooking(aux, delta);
+        }
+
+        //Fogao Vertical
+        if(kitchen.getFloor(4, 1).dontHaveActors()) {
+            Oven oven = new Oven(80, 80*4, new Texture(Gdx.files.internal("Kitchen/ovenV.png")));
+            kitchen.getFloor(4, 1).addActors(oven);
+        }
+        auxO = (Oven) kitchen.getFloor(4, 1).getOven();
+        game.batch.draw(auxO.getTexture(),auxO.x, auxO.y, auxO.width, auxO.height);
+        aux = (Food) kitchen.getFloor(4, 1).getFood();
+        if(aux != null && aux.getCookable()){
+            auxO.startCooking(aux, delta);
+        }
 
         //desenhando as comidas que estão pelo mapa
         ArrayList<Actors> auxA;
@@ -177,6 +201,7 @@ public class ScreenLevel1 implements Screen{
 
         //desenha o chef na tela
         game.batch.draw(chef.getTexture(), chef.x, chef.y, chef.width, chef.height);
+
         //desenha as comidas que estão na mão do chef
         for(int i = 0; i < chef.getHand().size(); i++){
             if(chef.getHand().get(i).getOrientation()[0] == 0 && chef.getHand().get(i).getOrientation()[1] == 0) {
@@ -210,15 +235,14 @@ public class ScreenLevel1 implements Screen{
             controller.pickup();
             chef.updateActorsCoordinates();
         }
-        if(Gdx.input.isKeyJustPressed(Keys.Q)){
+        if(Gdx.input.isKeyJustPressed(Keys.D)){
             controller.release();
         }
-        if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) game.setScreen(new MainMenuScreen(game, this.controller));;
+        if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) game.setScreen(new MainMenuScreen(game, this.controller));
 
         //desenha o tempo da fase
-        game.font.draw(game.batch, String.valueOf(controller.getLevelTime()),100, 100);
+        game.font.draw(game.batch, String.valueOf(controller.getLevelTime()/60)+":"+String.format("%02d",controller.getLevelTime()%60),100, 100);
         game.batch.end();
-
 
         //nao deixa o chef sair das bordas da tela
         if (chef.x < 0)
