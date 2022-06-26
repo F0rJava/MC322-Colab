@@ -62,7 +62,10 @@ public class ScreenLevel1 implements Screen{
         game.batch.draw(kitchen.getTexture(), 0,0, 1280, 720);//imagem do fundo
 
         //cria o mapa da sala
+
+        //Gerar as mesas da fase
         Table auxTable = null;
+        //mesas que estão na horizontal, na matriz de [6][1] ate [6][7]
         for(int j=1; j<6;j++){
             if(kitchen.getFloor(6, j).dontHaveActors()) {
                 Table tableV = new Table(80 * j, 480);
@@ -71,7 +74,15 @@ public class ScreenLevel1 implements Screen{
             auxTable = (Table) kitchen.getFloor(6, j).getTable();
             game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
         }
-        for(int j=7; j<15;j++){
+        if(kitchen.getFloor(6, 7).dontHaveActors()) {
+            Table tableV = new Table(80 * 7, 480);
+            kitchen.getFloor(6, 7).addActors(tableV);
+        }
+        auxTable = (Table) kitchen.getFloor(6, 7).getTable();
+        game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+
+        //mesas que estão na horizontal, na matriz de [6][9] ate [6][15]
+        for(int j=9; j<15;j++){
             if(kitchen.getFloor(6, j).dontHaveActors()) {
                 Table tableV = new Table(80 * j, 480);
                 kitchen.getFloor(6, j).addActors(tableV);
@@ -79,6 +90,8 @@ public class ScreenLevel1 implements Screen{
             auxTable = (Table) kitchen.getFloor(6, j).getTable();
             game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
         }
+
+        //Cria o fim da mesa na posicao [0][1]
         if(kitchen.getFloor(0, 1).dontHaveActors()) {
             Table tableFront1 = new Table(80, 0);
             kitchen.getFloor(0, 1).addActors(tableFront1);
@@ -86,7 +99,14 @@ public class ScreenLevel1 implements Screen{
         auxTable = (Table) kitchen.getFloor(0, 1).getTable();
         game.batch.draw(tableImageFront, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
 
-        for(int i=3; i<7; i++){
+        //Cria mesas que estão na vertical
+        if(kitchen.getFloor(3,1).dontHaveActors()) {
+            Table tableH = new Table(80, 80 * 3);
+            kitchen.getFloor(3, 1).addActors(tableH);
+        }
+        auxTable = (Table) kitchen.getFloor(3, 1).getTable();
+        game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+        for(int i=5; i<7; i++){
             if(kitchen.getFloor(i,1).dontHaveActors()) {
                 Table tableH = new Table(80, 80 * i);
                 kitchen.getFloor(i, 1).addActors(tableH);
@@ -101,6 +121,7 @@ public class ScreenLevel1 implements Screen{
         auxTable = (Table) kitchen.getFloor(1, 1).getTable();
         game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
 
+        //Cria o outro final da mesa
         if(kitchen.getFloor(0, 14).dontHaveActors()) {
             Table tableFront2 = new Table(1120, 0);
             kitchen.getFloor(0, 14).addActors(tableFront2);
@@ -108,7 +129,14 @@ public class ScreenLevel1 implements Screen{
         auxTable = (Table) kitchen.getFloor(0, 14).getTable();
         game.batch.draw(tableImageFront, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
 
-        for(int i=2; i<7; i++){
+        if(kitchen.getFloor(2, 14).dontHaveActors()) {
+            Table tableH = new Table(1120, 80 * 2);
+            kitchen.getFloor(2, 14).addActors(tableH);
+        }
+        auxTable = (Table) kitchen.getFloor(2, 14).getTable();
+        game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+
+        for(int i=4; i<7; i++){
             if(kitchen.getFloor(i, 14).dontHaveActors()) {
                 Table tableH = new Table(1120, 80 * i);
                 kitchen.getFloor(i, 14).addActors(tableH);
@@ -126,6 +154,7 @@ public class ScreenLevel1 implements Screen{
         auxGen = (Generator) kitchen.getFloor(1, 14).getGen();
         game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
 
+        //Gera a comida caso não tenha
         if(kitchen.getFloor(1, 14).getFood() == null) {
             Generator auxGenBurger = (Generator) kitchen.getFloor(1, 14).getGen();
             kitchen.getFloor(1, 14).addActors(auxGenBurger.generateFood());
@@ -149,6 +178,22 @@ public class ScreenLevel1 implements Screen{
         aux = (Food) kitchen.getFloor(2, 1).getFood();
         game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
 
+        //Gerador de pao
+        if(kitchen.getFloor(3, 14).dontHaveActors()) {
+            Generator genPlate = new Generator(80*14, 80*3, "bun", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
+            kitchen.getFloor(3, 14).addActors(genPlate);
+        }
+        auxGen = (Generator) kitchen.getFloor(3, 14).getGen();
+        game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
+
+        //Gera um outro pao caso nao tenha
+        if(kitchen.getFloor(3, 14).getFood() == null) {
+            Generator auxGenPlate = (Generator) kitchen.getFloor(3,14).getGen();
+            kitchen.getFloor(3, 14).addActors(auxGenPlate.generateFood());
+        }
+        aux = (Food) kitchen.getFloor(3, 14).getFood();
+        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+
         //Lixeira
         if(kitchen.getFloor(6, 6).dontHaveActors()){
             Trash trash = new Trash(80*6, 80*6, new Texture(Gdx.files.internal("Kitchen/trashImage.png")), kitchen.getFloor(6, 6));
@@ -156,7 +201,7 @@ public class ScreenLevel1 implements Screen{
         }
         Trash auxT = (Trash) kitchen.getFloor(6, 6).getTrash();
         auxT.deleteFood();
-        game.batch.draw(auxT.getTexture(),auxT.x, auxT.y, aux.width, aux.height);
+        game.batch.draw(auxT.getTexture(),auxT.x, auxT.y, auxT.width, auxT.height);
 
         //Fogão Horizontal
         if(kitchen.getFloor(6, 8).dontHaveActors()) {

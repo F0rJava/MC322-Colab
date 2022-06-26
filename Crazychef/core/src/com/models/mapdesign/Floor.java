@@ -67,6 +67,14 @@ public class Floor {
         return null;
     }
 
+    public Actors getOven(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof Oven)
+                return actors.get(i);
+        }
+        return null;
+    }
+
     public int getI(){
         return this.i;
     }

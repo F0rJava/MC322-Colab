@@ -3,6 +3,7 @@ package com.models.mapdesign;
 import com.badlogic.gdx.graphics.Texture;
 import com.models.Actors;
 import com.models.Food;
+import com.models.food.Bun;
 import com.models.food.Burger;
 import com.models.food.Plate;
 
@@ -21,6 +22,8 @@ public class Generator extends Actors {
     public Food generateFood(){
         if(food.equalsIgnoreCase("Burger"))
             return new Burger(Math.round(this.x), Math.round(this.y));
+        else if (food.equalsIgnoreCase("Bun"))
+            return new Bun(Math.round(this.x), Math.round(this.y));
         else
             return new Plate(Math.round(this.x), Math.round(this.y));
     }

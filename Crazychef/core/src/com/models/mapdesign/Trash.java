@@ -20,6 +20,7 @@ public class Trash extends Actors {
     public Texture getTexture(){
         return texture;
     }
+
     public void deleteFood(){
         for(int i = 0; i < floor.getActors().size(); i++){
             if(floor.getActors().get(i) instanceof Food){

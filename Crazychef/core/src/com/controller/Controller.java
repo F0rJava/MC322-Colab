@@ -1,17 +1,8 @@
 package com.controller;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.models.*;
 import com.models.food.Plate;
 import com.models.mapdesign.Kitchen;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import jdk.tools.jlink.internal.Platform;
 
 import java.util.ArrayList;
 
@@ -130,25 +121,33 @@ public class Controller{
     public void release(){
         if(chef.getOrientation(0)){
             if(Math.round(chef.y/80)-1 >= 0) {
-                if(kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood() == null || kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood() instanceof Plate)
+                if(kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood() == null)
+                    chef.release(kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)));
+                else if (kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)));
             }
         }
         else if (chef.getOrientation(1)){
             if(Math.round(chef.y/80)+1 < 9) {
-                if(kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).getFood() == null || kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).getFood() instanceof Plate)
+                if(kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).getFood() == null)
+                    chef.release(kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)));
+                else if (kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)));
             }
         }
         else if (chef.getOrientation(2)) {
             if(Math.round(chef.x/80)-1 >= 0) {
-                if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).getFood() == null || kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).getFood() instanceof Plate)
+                if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).getFood() == null)
+                    chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1));
+                else if (kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1));
             }
         }
         else {
             if (Math.round(chef.x / 80) + 1 < 16) {
-                if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).getFood() == null || kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).getFood() instanceof Plate)
+                if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).getFood() == null)
+                    chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1));
+                else if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1));
             }
         }

@@ -3,7 +3,7 @@ package com.models;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
-public class Food extends Actors{
+public abstract class Food extends Actors{
     protected int[] orientation;
     protected Texture baseTexture;
     protected Texture vanish;
