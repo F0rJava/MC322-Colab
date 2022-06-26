@@ -36,7 +36,7 @@ public class ScreenLevel1 implements Screen{
     public ScreenLevel1(final Crazychef game, Controller controller){
         this.game = game;
         this.controller = controller;
-        this.orderController = new OrderController(kitchen);
+        this.orderController = new OrderController();
         controller.setLevelTime(180); //tempo de duração da fase (180s)
 
         tableImageH = new Texture(Gdx.files.internal("Kitchen/tableH.png"));
@@ -284,6 +284,15 @@ public class ScreenLevel1 implements Screen{
             controller.release();
         }
         if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) game.setScreen(new MainMenuScreen(game, this.controller));
+
+        //chama o metodo que faz pedidos do orderController e desenha os pedidos
+        orderController.generateOrders(delta);
+        for(int i=0; i<3; i++){
+            if(orderController.getOrders(i)!= null){
+                game.batch.draw(orderController.getOrders(i).getBackGround(), orderController.getOrders(i).x, orderController.getOrders(i).y,
+                        orderController.getOrders(i).width, orderController.getOrders(i).height);
+            }
+        }
 
         //desenha o tempo da fase
         game.font.draw(game.batch, String.valueOf(controller.getLevelTime()/60)+":"+String.format("%02d",controller.getLevelTime()%60),100, 100);

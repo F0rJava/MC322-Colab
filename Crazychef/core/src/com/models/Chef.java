@@ -20,8 +20,7 @@ public class Chef extends Actors {
     private Texture chefRight;
 
     public Chef(int x, int y) {
-        //posição onde o chefe inicia
-        super(x,y);
+        super(x,y);//posição onde o chefe inicia
         this.width = 80;
         this.height = 140;
         this.plate = null;
