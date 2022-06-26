@@ -2,6 +2,7 @@ package com.models;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.models.food.Burger;
 import com.models.food.Plate;
 import com.badlogic.gdx.graphics.Texture;
 import com.models.mapdesign.Floor;
@@ -80,17 +81,42 @@ public class Chef extends Actors {
         }
     }
 
-    public boolean hold(Food food){
+    public void updateFoodOrder(){
+        //ordem de inserção para fase 1: burger>tomate>alface>queijo>pao
+        Food aux;
+        for(int i = 1; i < hand.size(); i++){
+
+        }
+    }
+
+    public boolean canHold(Food food){
         if(food != null) {
-            if (hand.size() == 0) {
-                hand.add(food);
+            if (hand.size() == 0)
                 return true;
-            } else if (hand.get(0) instanceof Plate && !(food instanceof Plate)) {
-                hand.add(food);
+            else if (hand.get(0) instanceof Plate && !(food instanceof Plate))
                 return true;
-            }
         }
         return false;
+    }
+
+    public void insertSorted(Food food){
+        Food aux;
+        int aux2 = hand.size();
+        boolean gotInserted = false;
+        if(aux2 == 0 || aux2 == 1)
+            hand.add(food);
+        else if(aux2 >= 2){
+            for(int i = 1; i < aux2; i++) {
+                if (hand.get(i).getPrio() > food.getPrio()) {
+                    aux = hand.get(i);
+                    hand.set(i, food);
+                    insertSorted(aux);
+                    gotInserted = true;
+                }
+            }
+            if(!gotInserted)
+                hand.add(food);
+        }
     }
 
     public void release(Floor floor){

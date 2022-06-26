@@ -15,6 +15,7 @@ public class Burger extends Food {
         this.cookable = true;
         this.timeToBurn = 20;
         this.timeUntilCooked = 10;
+        this.prio = 0;
     }
 
     public void updateTime(float dt){

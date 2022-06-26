@@ -54,7 +54,7 @@ public class Controller{
     public boolean canPickup(Food food){
         if (chef.getHand().size() == 0)
             return true;
-        else if(chef.getHand().size() == 1 && chef.getHand().get(0) instanceof Plate){
+        else if(chef.getHand().size() >= 1 && chef.getHand().get(0) instanceof Plate){
             if(food.getCookable() && food.getCooked())
                 return true;
             else if(!food.getCookable())
@@ -93,7 +93,8 @@ public class Controller{
                     if(aux1.get(i) instanceof Food){
                         aux2 = (Food) aux1.get(i);
                         if(canPickup(aux2)) {
-                            if (chef.hold(aux2)) {
+                            if (chef.canHold(aux2)) {
+                                chef.insertSorted(aux2);
                                 kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).removeActors(aux2);
                                 i--;
                             }
@@ -110,7 +111,8 @@ public class Controller{
                     if(aux1.get(i) instanceof  Food){
                         aux2 = (Food) aux1.get(i);
                         if(canPickup(aux2)) {
-                            if (chef.hold(aux2)) {
+                            if (chef.canHold(aux2)) {
+                                chef.insertSorted(aux2);
                                 kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).removeActors(aux2);
                                 i--;
                             }
@@ -127,7 +129,8 @@ public class Controller{
                     if(aux1.get(i) instanceof  Food){
                         aux2 = (Food) aux1.get(i);
                         if(canPickup(aux2)) {
-                            if (chef.hold(aux2)) {
+                            if (chef.canHold(aux2)) {
+                                chef.insertSorted(aux2);
                                 kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).removeActors(aux2);
                                 i--;
                             }
@@ -145,7 +148,8 @@ public class Controller{
                     if(aux1.get(i) instanceof  Food){
                         aux2 = (Food) aux1.get(i);
                         if(canPickup(aux2)) {
-                            if (chef.hold(aux2)) {
+                            if (chef.canHold(aux2)) {
+                                chef.insertSorted(aux2);
                                 kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).removeActors(aux2);
                                 i--;
                             }

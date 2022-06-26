@@ -9,6 +9,7 @@ public abstract class Food extends Actors{
     protected Texture vanish;
     protected boolean cookable = false;
     protected boolean isCooked = false;
+    protected Integer prio;
 
     public Food(int x, int y, Texture baseTexture){
         super(x, y);

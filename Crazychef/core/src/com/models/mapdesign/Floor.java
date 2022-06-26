@@ -82,4 +82,7 @@ public class Floor {
     public int getJ(){
         return this.j;
     }
+
+    public void insertSorted(Actors food){
+    }
 }
