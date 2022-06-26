@@ -126,7 +126,7 @@ public class Chef extends Actors {
                 hand.get(i).setOrientation(0, 10);
                 hand.get(i).setX(floor.getJ()*80);
                 hand.get(i).setY(floor.getI()*80);
-                floor.addActors(hand.get(i));
+                floor.insertSorted(hand.get(i));
             }
             int aux = hand.size();
             for(int i = 0; i < aux; i++){

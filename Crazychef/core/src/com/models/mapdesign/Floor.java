@@ -83,6 +83,23 @@ public class Floor {
         return this.j;
     }
 
-    public void insertSorted(Actors food){
+    public void insertSorted(Food food){
+        Food aux;
+        int aux2 = actors.size();
+        boolean gotInserted = false;
+        if(aux2 == 0 || aux2 == 1 || aux2 == 2)
+            actors.add(food);
+        else if(aux2 >= 3){
+            for(int i = 2; i < aux2; i++) {
+                aux = (Food) actors.get(i);
+                if (aux.getPrio() > food.getPrio()) {
+                    actors.set(i, food);
+                    insertSorted(aux);
+                    gotInserted = true;
+                }
+            }
+            if(!gotInserted)
+                actors.add(food);
+        }
     }
 }
