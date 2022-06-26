@@ -51,6 +51,37 @@ public class Controller{
         }
     }
 
+    public boolean canPickup(Food food){
+        if (chef.getHand().size() == 0)
+            return true;
+        else if(chef.getHand().size() == 1 && chef.getHand().get(0) instanceof Plate){
+            if(food.getCookable() && food.getCooked())
+                return true;
+            else if(!food.getCookable())
+                return true;
+        }
+        return false;
+    }
+
+    public boolean canRelease(Food food){
+        if(chef.getHand().size() == 1 && (food == null || food instanceof Plate)){
+            if(chef.getHand().get(0).getCookable()){
+                if(chef.getHand().get(0).getCooked())
+                    return true;
+                else if (!(food instanceof Plate))
+                    return true;
+                return false;
+            }
+            else if(chef.getHand().get(0) instanceof Plate && food instanceof Plate)
+                return false;
+            else
+                return true;
+        }
+        else if (chef.getHand().size() > 1 && food == null)
+            return true;
+        return false;
+    }
+
     public void pickup(){
         ArrayList<Actors> aux1 = null;
         Food aux2 = null;
@@ -61,9 +92,11 @@ public class Controller{
                 for(int i = 0; i < aux1.size(); i++){
                     if(aux1.get(i) instanceof Food){
                         aux2 = (Food) aux1.get(i);
-                        if(chef.hold(aux2)) {
-                            kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).removeActors(aux2);
-                            i--;
+                        if(canPickup(aux2)) {
+                            if (chef.hold(aux2)) {
+                                kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).removeActors(aux2);
+                                i--;
+                            }
                         }
                     }
                 }
@@ -76,9 +109,11 @@ public class Controller{
                 for(int i = 0; i < aux1.size(); i++){
                     if(aux1.get(i) instanceof  Food){
                         aux2 = (Food) aux1.get(i);
-                        if(chef.hold(aux2)) {
-                            kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).removeActors(aux2);
-                            i--;
+                        if(canPickup(aux2)) {
+                            if (chef.hold(aux2)) {
+                                kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).removeActors(aux2);
+                                i--;
+                            }
                         }
                     }
                 }
@@ -91,9 +126,11 @@ public class Controller{
                 for(int i = 0; i < aux1.size(); i++){
                     if(aux1.get(i) instanceof  Food){
                         aux2 = (Food) aux1.get(i);
-                        if(chef.hold(aux2)) {
-                            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).removeActors(aux2);
-                            i--;
+                        if(canPickup(aux2)) {
+                            if (chef.hold(aux2)) {
+                                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).removeActors(aux2);
+                                i--;
+                            }
                         }
                     }
                 }
@@ -107,9 +144,11 @@ public class Controller{
                 for(int i = 0; i < aux1.size(); i++){
                     if(aux1.get(i) instanceof  Food){
                         aux2 = (Food) aux1.get(i);
-                        if(chef.hold(aux2)) {
-                            kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).removeActors(aux2);
-                            i--;
+                        if(canPickup(aux2)) {
+                            if (chef.hold(aux2)) {
+                                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).removeActors(aux2);
+                                i--;
+                            }
                         }
                     }
                 }
@@ -119,39 +158,38 @@ public class Controller{
     }
 
     public void release(){
+        Food aux;
+
         if(chef.getOrientation(0)){
             if(Math.round(chef.y/80)-1 >= 0) {
-                if(kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood() == null)
-                    chef.release(kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)));
-                else if (kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
+                aux = (Food) kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).getFood();
+                if(this.canRelease(aux))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)));
             }
         }
         else if (chef.getOrientation(1)){
             if(Math.round(chef.y/80)+1 < 9) {
-                if(kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).getFood() == null)
-                    chef.release(kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)));
-                else if (kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
+                aux = (Food) kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).getFood();
+                if(this.canRelease(aux))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)));
             }
         }
         else if (chef.getOrientation(2)) {
             if(Math.round(chef.x/80)-1 >= 0) {
-                if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).getFood() == null)
-                    chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1));
-                else if (kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
+                aux = (Food) kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).getFood();
+                if(this.canRelease(aux))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1));
             }
         }
         else {
             if (Math.round(chef.x / 80) + 1 < 16) {
-                if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).getFood() == null)
-                    chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1));
-                else if(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).getFood() instanceof Plate && chef.getHand().size() == 1 && !(chef.getHand().get(0) instanceof Plate))
+                aux = (Food) kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).getFood();
+                if(this.canRelease((aux)))
                     chef.release(kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1));
             }
         }
     }
+
     public void setChef(Chef chef){
         this.chef = chef;
     }

@@ -28,9 +28,11 @@ public class Burger extends Food {
         }
         if(timeUntilCooked == 0){
             this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/cookedBurger.png")));
+            super.setCooked(true);
         }
         if(timeUntilCooked == 0 && timeToBurn == 0){
             this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/toastedBurger.png")));
+            super.setCooked(false);
         }
         if(timeToBurn>0){
             if(timeCount>=1){

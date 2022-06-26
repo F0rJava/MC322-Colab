@@ -8,6 +8,7 @@ public abstract class Food extends Actors{
     protected Texture baseTexture;
     protected Texture vanish;
     protected boolean cookable = false;
+    protected boolean isCooked = false;
 
     public Food(int x, int y, Texture baseTexture){
         super(x, y);
@@ -41,6 +42,14 @@ public abstract class Food extends Actors{
 
     public Texture getBaseTexture(){
         return baseTexture;
+    }
+
+    public boolean getCooked(){
+        return isCooked;
+    }
+
+    public void setCooked(boolean cooked){
+        this.isCooked = cooked;
     }
 
     public void updateTime(float dt){
