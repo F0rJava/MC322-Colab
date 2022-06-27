@@ -311,10 +311,13 @@ public class ScreenLevel1 implements Screen{
 
         //chama o metodo que faz pedidos do orderController e desenha os pedidos
         orderController.generateOrders(delta);
+        orderController.updateOrders(delta);//atualiza os pedidos
         for(int i=0; i<3; i++){
             if(orderController.getOrders(i)!= null){
                 game.batch.draw(orderController.getOrders(i).getBackGround(), orderController.getOrders(i).x, orderController.getOrders(i).y,
                         orderController.getOrders(i).width, orderController.getOrders(i).height);
+                game.batch.draw(orderController.getOrders(i).getTimeBarTexture(), orderController.getOrders(i).getTimeBar().x,
+                        orderController.getOrders(i).getTimeBar().y, orderController.getOrders(i).getTimeBar().width, orderController.getOrders(i).getTimeBar().height);
                 for(int j=0; j<4; j++){
                     if(orderController.getOrders(i).getFood(j)!=null){
                         game.batch.draw(orderController.getOrders(i).getFood(j).getBaseTexture(), orderController.getOrders(i).getFood(j).x,

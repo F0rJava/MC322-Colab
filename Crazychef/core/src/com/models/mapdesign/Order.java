@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.models.Food;
 import com.models.food.Bun;
 import com.models.food.Burger;
+import com.models.food.Lettuce;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.util.Random;
@@ -13,11 +14,13 @@ import java.awt.*;
 
 public class Order extends Rectangle {
     private Texture backGround;
-    private Rectangle progressionBar;
-    private Texture progressionBarTexture[];
+    private Rectangle timeBar;
+    private Texture timeBarTexture;
+    private Texture timeBarTextureVec[];
     private Food food[];
     private Integer orderTime;
     private Integer remainingTime;
+    private float timeCount;
 
     public Order(int x){
         this.x = x;
@@ -25,26 +28,27 @@ public class Order extends Rectangle {
         this.width = 320;
         this.height = 160;
 
-        orderTime = 30;
-        remainingTime = 30;
+        orderTime = 15;//tempo maximo que o pedido aparece na tela
+        remainingTime = orderTime;//tempo restante do pedido
 
         backGround = new Texture(Gdx.files.internal("Kitchen/Order/orderBackground.png"));
 
-        progressionBar = new Rectangle();
-        progressionBar.width = 264;
-        progressionBar.height = 10;
-        progressionBar.x = this.x + 28;
-        progressionBar.y = this.y + 115;
+        timeBar = new Rectangle();
+        timeBar.width = 264;
+        timeBar.height = 10;
+        timeBar.x = x + 28;
+        timeBar.y = y + 115;
 
-        progressionBarTexture = new Texture[3];
-        progressionBarTexture[0] = new Texture(Gdx.files.internal("Kitchen/Order/progressionBarGreen.png"));
-        progressionBarTexture[1] = new Texture(Gdx.files.internal("Kitchen/Order/progressionBarYellow.png"));
-        progressionBarTexture[2] = new Texture(Gdx.files.internal("Kitchen/Order/progressionBarred.png"));
+        timeBarTextureVec = new Texture[3];
+        timeBarTextureVec[0] = new Texture(Gdx.files.internal("Kitchen/Order/timeBarGreen.png"));
+        timeBarTextureVec[1] = new Texture(Gdx.files.internal("Kitchen/Order/timeBarYellow.png"));
+        timeBarTextureVec[2] = new Texture(Gdx.files.internal("Kitchen/Order/timeBarRed.png"));
+        timeBarTexture = timeBarTextureVec[0];
+
 
         food = new Food[4];//no maximo 4 itens no pedido
-        food[0] = new Burger(this.x+15,this.y+17);//sempre tem um hamburger no pedido na pos inicial
+        food[0] = new Burger(this.x+15, this.y+17);//tem pelo menos 1 burger (como tem a maior prioridade, começa na primeira posição)
         food[0].setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/cookedBurger.png")));
-        //food[1] = new Bun(Math.round(food[0].x)+6,this.y+38);//sempre tem um pao no pedido (posição corrigida depois)
     }
 
     public Texture getBackGround(){
@@ -54,26 +58,59 @@ public class Order extends Rectangle {
     public Food getFood(int i){
         return food[i];
     }
-
-    public Texture getFoodTexture(int i){
-        return food[i].getBaseTexture();
+    public Integer getOrderTime(){
+        return this.orderTime;
+    }
+    public Integer getRemainingTime(){
+        return this.remainingTime;
     }
 
-    //gera o pedido aleatorio com até 4 comidas
+    public Rectangle getTimeBar(){
+        return timeBar;
+    }
+
+    public Texture getTimeBarTexture(){
+        return timeBarTexture;
+    }
+    public void setTimeBarTexture(int i){
+        this.timeBarTexture = timeBarTextureVec[i];
+    }
+
+
+    //gera o pedido aleatorio com até 4 comidas (pao sempre no final
     public void generateOrder(){
         Random rand = new Random();
-        Food aux;
-        int int_rand = rand.nextInt(2);
-        for(int i=1; i<4; i++){
+        for(int i=1; i<3; i++){
+            int int_rand = rand.nextInt(3);
             //gera a comida aleatoria e insere no vetor de comidas do pedido
             switch(int_rand){
                 case 1:
-                    this.insertSorted(this.food,new Bun(this.x, this.y+17));
+                    Food aux = new Burger(this.x, this.y+17);
+                    aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/cookedBurger.png")));
+                    this.insertSorted(this.food, aux);
                     break;
                 case 2:
+                    case 3:
+                    this.insertSorted(this.food, new Lettuce(this.x, this.y+17));
                     break;
             }
+        }
+        //posiciona o pao no final
+        for(int j=0; j<4; j++){
+            if(food[j] == null){
+                food[j] = new Bun(Math.round(food[j-1].x + food[j-1].width-10),this.y+17);
+                break;
+            }
+        }
+    }
 
+    public void updateTime(float dt){
+        timeCount+=dt;
+        if(remainingTime>0){
+            if(timeCount>=1){
+                remainingTime--;
+                timeCount = 0;
+            }
         }
     }
 
@@ -82,7 +119,7 @@ public class Order extends Rectangle {
         int pos = 0;
         for(int i=0; i<4; i++){
             if(foodVec[i]!=null){
-                if(foodVec[i].getPrio()<food.getPrio()){
+                if(foodVec[i].getPrio()<=food.getPrio()){
                     pos++;
                 }
                 else break;
@@ -94,7 +131,7 @@ public class Order extends Rectangle {
         }
 
         foodVec[pos] = food;
-        foodVec[pos].x = foodVec[pos-1].x+15;
+        foodVec[pos].x = foodVec[pos-1].x + foodVec[pos-1].width-10;
     }
 }
 

@@ -25,12 +25,12 @@ public class OrderController {
         lastGeneratedOrder += dt;
         for(int i=0; i<3; i++){
             if(orders[i] == null){
-                if(i == 0 && lastGeneratedOrder > 3){
+                if(i == 0 && lastGeneratedOrder > 1){
                     orders[i] = new Order(i*320);
                     orders[i].generateOrder();
                     lastGeneratedOrder = 0;
                 }
-                else if(lastGeneratedOrder > 20){
+                else if(lastGeneratedOrder > 5){
                     orders[i] = new Order(i*320);
                     orders[i].generateOrder();
                     lastGeneratedOrder = 0;
@@ -38,9 +38,34 @@ public class OrderController {
             }
         }
     }
-    /*public void updateOrders(float dt){
 
-    }*/
+    //atualiza e checa o tempo dos pedidos, se tiver zerado de algum deles, desloca tudo para a esquerda
+    public void updateOrders(float dt){
+        //atualiza o vetor de pedidos e o tempo
+        for(int i=0; i<3; i++){
+            if(orders[i]!=null){
+                orders[i].updateTime(dt);
+                if(orders[i].getRemainingTime()<=6){//barra vermelha
+                    orders[i].setTimeBarTexture(2);
+                }
+                else if(orders[i].getRemainingTime()<=orders[i].getOrderTime()/2){//barra amarela
+                    orders[i].setTimeBarTexture(1);
+                }
+                if(orders[i].getRemainingTime()==0){
+                    shiftOrders(orders, i);
+                }
+            }
+        }
+    }
+
+    public void shiftOrders(Order[] orders, int i){
+        for(int j=i; j<3; j++){
+            if(j+1!=3){
+                orders[j] = orders[j+1];
+            }
+            else orders[j] = null;
+        }
+    }
 
 }
 
