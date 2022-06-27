@@ -236,7 +236,7 @@ public class ScreenLevel1 implements Screen{
 
         //Tabua de cortar
         if(kitchen.getFloor(6, 9).dontHaveActors()) {
-            CutBoard cutBoard= new CutBoard(80*9, 80*6, new Texture(Gdx.files.internal("Kitchen/cuttingBoard.jpg")));
+            CutBoard cutBoard= new CutBoard(80*9, 80*6, new Texture(Gdx.files.internal("Kitchen/cuttingBoardV.png")));
             kitchen.getFloor(6, 9).addActors(cutBoard);
         }
         CutBoard auxC = (CutBoard) kitchen.getFloor(6, 9).getCutBoard();

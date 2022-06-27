@@ -113,6 +113,7 @@ public class Chef extends Actors {
                     hand.set(i, food);
                     insertSorted(aux);
                     gotInserted = true;
+                    break;
                 }
             }
             if(!gotInserted)

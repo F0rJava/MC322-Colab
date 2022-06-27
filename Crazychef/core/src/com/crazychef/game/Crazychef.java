@@ -1,5 +1,7 @@
 package com.crazychef.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.controller.Controller;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,12 +14,18 @@ public class Crazychef extends Game {
 	public BitmapFont font;
 	//controle do jogo
 	public Controller controller;
+	private Music musicalTheme;
 
 	public void create() {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		controller = new Controller();
 		this.setScreen(new MainMenuScreen(this, controller));
+
+		musicalTheme = Gdx.audio.newMusic(Gdx.files.internal("musicalTheme.mp3"));
+		musicalTheme.setVolume(0.1f);
+		musicalTheme.setLooping(true);
+		musicalTheme.play();
 	}
 
 	public void render() {

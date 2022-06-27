@@ -104,6 +104,7 @@ public class Floor {
                     actors.set(i, food);
                     insertSorted(aux);
                     gotInserted = true;
+                    break;
                 }
             }
             if(!gotInserted)

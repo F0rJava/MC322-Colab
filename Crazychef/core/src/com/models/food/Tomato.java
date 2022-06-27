@@ -4,14 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.models.Food;
 
-public class Lettuce extends Food {
+public class Tomato extends Food {
     private Integer timeToCut;
     private float timeCount;
-    public Lettuce(int x, int y){
-        super(x, y, new Texture(Gdx.files.internal("Food/Level1/lettuce.png")));
+    public Tomato(int x, int y){
+        super(x, y, new Texture(Gdx.files.internal("Food/Level1/tomato.png")));
         this.cuttable = true;
         this.timeToCut = 3;
-        this.prio = 2;
+        this.prio = 3;
     }
 
     public void updateTime(float dt){
@@ -23,7 +23,7 @@ public class Lettuce extends Food {
             }
         }
         if(timeToCut == 0){
-            this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/LettuceCut.png")));
+            this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/tomatoCut.png")));
             super.setCut();
         }
     }
