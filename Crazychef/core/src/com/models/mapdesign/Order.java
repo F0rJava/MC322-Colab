@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.models.Food;
 import com.models.food.Bun;
 import com.models.food.Burger;
+import com.models.food.Cheese;
 import com.models.food.Lettuce;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
@@ -28,7 +29,7 @@ public class Order extends Rectangle {
         this.width = 320;
         this.height = 160;
 
-        orderTime = 15;//tempo maximo que o pedido aparece na tela
+        orderTime = 50;//tempo maximo que o pedido aparece na tela
         remainingTime = orderTime;//tempo restante do pedido
 
         backGround = new Texture(Gdx.files.internal("Kitchen/Order/orderBackground.png"));
@@ -91,11 +92,9 @@ public class Order extends Rectangle {
                     this.insertSorted(this.food, aux);
                     break;
                 case 2:
-                    case 3:
-                        aux = new Lettuce(this.x, this.y+17);
-                        aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/LettuceCut.png")));
-                        this.insertSorted(this.food, aux);
-                        break;
+                    aux = new Cheese(this.x, this.y+17);
+                    this.insertSorted(this.food, aux);
+                    break;
             }
         }
         //posiciona o pao no final
@@ -129,7 +128,7 @@ public class Order extends Rectangle {
             }
         }
 
-        for(int i = 2; i>=pos; i--){
+        for(int i = 2; i>pos; i--){
             foodVec[i+1] = foodVec[i];
         }
 

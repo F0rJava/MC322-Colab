@@ -3,13 +3,19 @@ package com.controller;
 import com.models.food.Burger;
 import com.models.mapdesign.Kitchen;
 import com.models.mapdesign.Order;
+import com.models.mapdesign.OrderDelivery;
 
 public class OrderController {
     private Order orders[];
     private float lastGeneratedOrder; //tempo em segundos do ultimo pedido gerado
+    private Integer points = 0;
+    private OrderDelivery orderDelivery;// objeto que entrega os pedidos
 
     public OrderController(){
         this.orders = new Order[3];//no maximo 3 pedidos simultaneos
+    }
+    public void connectOrderDelivery(OrderDelivery orderDelivery){
+        this.orderDelivery = orderDelivery;
     }
 
     public Order getOrders(int pos) {
@@ -18,6 +24,14 @@ public class OrderController {
 
     public void setOrders(Order orders, int pos) {
         this.orders[pos] = orders;
+    }
+
+    public void setPoints(int i){
+        this.points = i;
+    }
+
+    public Integer getPoints(){
+        return this.points;
     }
 
     public void generateOrders(float dt){
@@ -53,6 +67,25 @@ public class OrderController {
                 }
                 if(orders[i].getRemainingTime()==0){
                     shiftOrders(orders, i);
+                }
+            }
+        }
+    }
+
+    public void checkOrders(){//compara os pedidos com o que foi entrege no orderDelivery
+        for(int i=0; i<3; i++){
+            if(orders[i]!=null){
+                if(orderDelivery.checkOrder(orders[i])){
+                    shiftOrders(orders, i);
+                    if(orders[i].getRemainingTime()<orders[i].getOrderTime()/4){
+                        points += 25;
+                    }
+                    else if(orders[i].getRemainingTime()<orders[i].getOrderTime()/2){
+                        points += 50;
+                    }
+                    else {
+                        points+=100;
+                    }
                 }
             }
         }

@@ -1,15 +1,12 @@
 package com.crazychef.game;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.controller.Controller;
@@ -31,7 +28,7 @@ public class MainMenuScreen implements Screen{
         gameTitle = new Texture(Gdx.files.internal("gameTitle.png"));
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
-        Level1 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("Level1.png")))));
+        Level1 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("Level1Button.png")))));
         Level1.setPosition(50, 175);
         Level1.setSize(400, 197);
         stage =  new Stage(new ScreenViewport());

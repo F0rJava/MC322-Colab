@@ -1,9 +1,6 @@
 package com.crazychef.game;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.scenes.scene2d.ui.Container;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.controller.Controller;
 import com.controller.OrderController;
 import com.models.*;
@@ -12,12 +9,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.Input.*;
-import com.badlogic.gdx.utils.TimeUtils;
-import com.models.food.Plate;
 import com.models.mapdesign.*;
-import com.sun.tools.javac.jvm.Gen;
-import sun.tools.jconsole.Tab;
-
 import java.util.ArrayList;
 
 
@@ -137,119 +129,6 @@ public class ScreenLevel1 implements Screen{
             game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
         }
 
-        //Gerador de hamburguer
-        Generator auxGen;
-        if(kitchen.getFloor(1, 14).dontHaveActors()) {
-            Generator genBurger = new Generator(1120, 80, "burger", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
-            kitchen.getFloor(1, 14).addActors(genBurger);
-        }
-        auxGen = (Generator) kitchen.getFloor(1, 14).getGen();
-        game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
-
-        //Gera a comida caso não tenha
-        if(kitchen.getFloor(1, 14).getFood() == null) {
-            Generator auxGenBurger = (Generator) kitchen.getFloor(1, 14).getGen();
-            kitchen.getFloor(1, 14).addActors(auxGenBurger.generateFood());
-        }
-        Food aux = (Food) kitchen.getFloor(1, 14).getFood();
-        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
-
-        //Gerador de prato
-        if(kitchen.getFloor(2, 1).dontHaveActors()) {
-            Generator genPlate = new Generator(80, 160, "plate", new Texture(Gdx.files.internal("Kitchen/tableH.png")));
-            kitchen.getFloor(2, 1).addActors(genPlate);
-        }
-        auxGen = (Generator) kitchen.getFloor(2, 1).getGen();
-        game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
-
-        //Gera um outro prato caso nao tenha
-        if(kitchen.getFloor(2, 1).getFood() == null) {
-            Generator auxGenPlate = (Generator) kitchen.getFloor(2,1).getGen();
-            kitchen.getFloor(2, 1).addActors(auxGenPlate.generateFood());
-        }
-        aux = (Food) kitchen.getFloor(2, 1).getFood();
-        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
-
-        //Gerador de pao
-        if(kitchen.getFloor(3, 14).dontHaveActors()) {
-            Generator genBun = new Generator(80*14, 80*3, "bun", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
-            kitchen.getFloor(3, 14).addActors(genBun);
-        }
-        auxGen = (Generator) kitchen.getFloor(3, 14).getGen();
-        game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
-
-        //Gera um outro pao caso nao tenha
-        if(kitchen.getFloor(3, 14).getFood() == null) {
-            Generator auxGenBun = (Generator) kitchen.getFloor(3,14).getGen();
-            kitchen.getFloor(3, 14).addActors(auxGenBun.generateFood());
-        }
-        aux = (Food) kitchen.getFloor(3, 14).getFood();
-        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
-
-        //Gerador de alface
-        if(kitchen.getFloor(2, 14).dontHaveActors()) {
-            Generator genLettuce = new Generator(80*14, 80*2, "lettuce", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
-            kitchen.getFloor(2, 14).addActors(genLettuce);
-        }
-        auxGen = (Generator) kitchen.getFloor(2, 14).getGen();
-        game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
-
-        //Gera um outro alface caso nao tenha
-        if(kitchen.getFloor(2, 14).getFood() == null) {
-            Generator auxGenLettuce = (Generator) kitchen.getFloor(2,14).getGen();
-            kitchen.getFloor(2, 14).addActors(auxGenLettuce.generateFood());
-        }
-        aux = (Food) kitchen.getFloor(2, 14).getFood();
-        game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
-
-        //Lixeira
-        if(kitchen.getFloor(6, 6).dontHaveActors()){
-            Trash trash = new Trash(80*6, 80*6, new Texture(Gdx.files.internal("Kitchen/trashImage.png")), kitchen.getFloor(6, 6));
-            kitchen.getFloor(6, 6).addActors(trash);
-        }
-        Trash auxT = (Trash) kitchen.getFloor(6, 6).getTrash();
-        auxT.deleteFood();
-        game.batch.draw(auxT.getTexture(),auxT.x, auxT.y, auxT.width, auxT.height);
-
-        //Fogão Horizontal
-        if(kitchen.getFloor(6, 8).dontHaveActors()) {
-            Oven oven = new Oven(640, 80*6, new Texture(Gdx.files.internal("Kitchen/ovenH.png")));
-            kitchen.getFloor(6, 8).addActors(oven);
-        }
-        Oven auxO = (Oven) kitchen.getFloor(6, 8).getOven();
-        game.batch.draw(auxO.getTexture(),auxO.x, auxO.y, auxO.width, auxO.height);
-        aux = (Food) kitchen.getFloor(6, 8).getFood();
-        if(aux != null && aux.getCookable()){
-            auxO.startCooking(aux, delta);
-        }
-
-        //Fogao Vertical
-        if(kitchen.getFloor(4, 1).dontHaveActors()) {
-            Oven oven = new Oven(80, 80*4, new Texture(Gdx.files.internal("Kitchen/ovenV.png")));
-            kitchen.getFloor(4, 1).addActors(oven);
-        }
-        auxO = (Oven) kitchen.getFloor(4, 1).getOven();
-        game.batch.draw(auxO.getTexture(),auxO.x, auxO.y, auxO.width, auxO.height);
-        aux = (Food) kitchen.getFloor(4, 1).getFood();
-        auxO.startCooking(aux, delta);
-
-        //Tabua de cortar
-        if(kitchen.getFloor(6, 9).dontHaveActors()) {
-            CutBoard cutBoard= new CutBoard(80*9, 80*6, new Texture(Gdx.files.internal("Kitchen/cuttingBoardV.png")));
-            kitchen.getFloor(6, 9).addActors(cutBoard);
-        }
-        CutBoard auxC = (CutBoard) kitchen.getFloor(6, 9).getCutBoard();
-        game.batch.draw(auxC.getTexture(),auxC.x, auxC.y, auxC.width, auxC.height);
-        aux = (Food) kitchen.getFloor(6, 9).getFood();
-        if(aux != null && aux.getCuttable()) {
-            if(!aux.getCut())
-                chef.setCanMove(false);
-            else
-                chef.setCanMove(true);
-            auxC.startCutting(aux, delta);
-        }
-
-
         //desenhando as comidas que estão pelo mapa
         ArrayList<Actors> auxA;
         int a ;
@@ -306,7 +185,7 @@ public class ScreenLevel1 implements Screen{
         if(Gdx.input.isKeyJustPressed(Keys.D)){
             controller.release();
         }
-        if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) game.setScreen(new MainMenuScreen(game, this.controller));
+        if(Gdx.input.isKeyJustPressed(Keys.ESCAPE)) game.setScreen(new PauseScreen(game, this));
 
         //chama o metodo que faz pedidos do orderController e desenha os pedidos
         orderController.generateOrders(delta);
@@ -332,9 +211,14 @@ public class ScreenLevel1 implements Screen{
         font.draw(game.batch, String.valueOf(controller.getLevelTime()/60)+":"+String.format("%02d",controller.getLevelTime()%60),1130, 620);
         font.getData().setScale(1.5f, 1.5f);
         font.draw(game.batch, "TIME",1130, 690);
-        game.batch.end();
 
         //desenha a pontuação
+        font.getData().setScale(1.5f, 1.5f);
+        font.draw(game.batch, "SCORE",970, 690);
+        font.getData().setScale(1.5f, 1.5f);
+        font.draw(game.batch, String.format("%04d",orderController.getPoints()),980, 620);
+
+        game.batch.end();
 
         //nao deixa o chef sair das bordas da tela
         if (chef.x < 0)
@@ -346,6 +230,10 @@ public class ScreenLevel1 implements Screen{
         if (chef.y < 0)
             chef.y = 0;
 
+        //fim do jogo
+        if(controller.getLevelTime()==0){
+            game.setScreen(new EndLevelScreen(game, this.controller, this.orderController));
+        }
 
     }
 

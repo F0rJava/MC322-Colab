@@ -75,6 +75,14 @@ public class Floor {
         return null;
     }
 
+    public Actors getOrderDelivery(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof OrderDelivery)
+                return actors.get(i);
+        }
+        return null;
+    }
+
     public int getI(){
         return this.i;
     }
