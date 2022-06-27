@@ -5,7 +5,7 @@ import com.models.Actors;
 import com.models.Food;
 
 public class Oven extends Actors {
-    Texture texture;
+    private Texture texture;
     public Oven(int x, int y, Texture texture){
         super(x,y);
         this.width = 80;

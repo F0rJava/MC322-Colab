@@ -22,8 +22,8 @@ public class Crazychef extends Game {
 		controller = new Controller();
 		this.setScreen(new MainMenuScreen(this, controller));
 
-		musicalTheme = Gdx.audio.newMusic(Gdx.files.internal("musicalTheme.mp3"));
-		musicalTheme.setVolume(0.1f);
+		musicalTheme = Gdx.audio.newMusic(Gdx.files.internal("Sounds/musicalTheme.mp3"));
+		musicalTheme.setVolume(0.025f);
 		musicalTheme.setLooping(true);
 		musicalTheme.play();
 	}
