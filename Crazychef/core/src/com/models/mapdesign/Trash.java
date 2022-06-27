@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Trash extends Actors {
     private Texture texture;
     private Floor floor;
+
     public Trash(int x, int y, Texture texture, Floor floor){
         super(x, y);
         this.texture = texture;

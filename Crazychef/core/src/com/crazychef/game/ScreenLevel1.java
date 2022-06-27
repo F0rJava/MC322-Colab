@@ -54,79 +54,175 @@ public class ScreenLevel1 implements Screen{
 
         //cria o mapa da sala
 
-        //Gerar as mesas da fase
+        //Variaveis auxiliares
         Table auxTable = null;
-        //mesas que estão na horizontal, na matriz de [6][1] ate [6][7]
-        for(int j=1; j<6;j++){
-            if(kitchen.getFloor(6, j).dontHaveActors()) {
-                Table tableV = new Table(80 * j, 480);
-                kitchen.getFloor(6, j).addActors(tableV);
+        Generator auxGen;
+        Food aux;
+        Oven auxO;
+
+        for(int i = 0; i < 9; i++) {
+            for (int j = 1; j < 16; j++) {
+                if(i == 0 && j == 1) {
+                    if(kitchen.getFloor(0, 1).dontHaveActors()) { //Mesa
+                        Table tableFront1 = new Table(80, 0);
+                        kitchen.getFloor(0, 1).addActors(tableFront1);
+                    }
+                    auxTable = (Table) kitchen.getFloor(0, 1).getTable();
+                    game.batch.draw(tableImageFront, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 0 && j == 14) { //Mesa
+                    if(kitchen.getFloor(0, 14).dontHaveActors()) {
+                        Table tableFront2 = new Table(1120, 0);
+                        kitchen.getFloor(0, 14).addActors(tableFront2);
+                    }
+                    auxTable = (Table) kitchen.getFloor(0, 14).getTable();
+                    game.batch.draw(tableImageFront, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 1 && j == 1) { //Mesa
+                    if(kitchen.getFloor(1,1).dontHaveActors()) {
+                        Table tableH = new Table(80, 80);
+                        kitchen.getFloor(1, 1).addActors(tableH);
+                    }
+                    auxTable = (Table) kitchen.getFloor(1, 1).getTable();
+                    game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 1 && j ==14) { //Gerador de Hamburguer
+                    if(kitchen.getFloor(1, 14).dontHaveActors()) {
+                        Generator genBurger = new Generator(1120, 80, "burger", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
+                        kitchen.getFloor(1, 14).addActors(genBurger);
+                    }
+                    auxGen = (Generator) kitchen.getFloor(1, 14).getGen();
+                    game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
+                    if(kitchen.getFloor(1, 14).getFood() == null) {
+                        Generator auxGenBurger = (Generator) kitchen.getFloor(1, 14).getGen();
+                        kitchen.getFloor(1, 14).addActors(auxGenBurger.generateFood());
+                    }
+                    aux = (Food) kitchen.getFloor(1, 14).getFood();
+                    game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+                } else if (i == 2 && j == 1) { //Gerador de Prato
+                    if(kitchen.getFloor(2, 1).dontHaveActors()) {
+                        Generator genPlate = new Generator(80, 160, "plate", new Texture(Gdx.files.internal("Kitchen/tableH.png")));
+                        kitchen.getFloor(2, 1).addActors(genPlate);
+                    }
+                    auxGen = (Generator) kitchen.getFloor(2, 1).getGen();
+                    game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
+                    if(kitchen.getFloor(2, 1).getFood() == null) {
+                        Generator auxGenPlate = (Generator) kitchen.getFloor(2,1).getGen();
+                        kitchen.getFloor(2, 1).addActors(auxGenPlate.generateFood());
+                    }
+                    aux = (Food) kitchen.getFloor(2, 1).getFood();
+                    game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+                } else if (i == 2 && j == 14) { //Gerador de queijo
+                    if(kitchen.getFloor(2, 14).dontHaveActors()) {
+                        Generator genCheese = new Generator(80*14, 80*2, "cheese", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
+                        kitchen.getFloor(2, 14).addActors(genCheese);
+                    }
+                    auxGen = (Generator) kitchen.getFloor(2, 14).getGen();
+                    game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
+                    if(kitchen.getFloor(2, 14).getFood() == null) {
+                        Generator auxGenCheese = (Generator) kitchen.getFloor(2,14).getGen();
+                        kitchen.getFloor(2, 14).addActors(auxGenCheese.generateFood());
+                    }
+                    aux = (Food) kitchen.getFloor(2, 14).getFood();
+                    game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+                } else if (i == 3 && j == 1) { //Mesa
+                    if(kitchen.getFloor(3,1).dontHaveActors()) {
+                        Table tableH = new Table(80, 80 * 3);
+                        kitchen.getFloor(3, 1).addActors(tableH);
+                    }
+                    auxTable = (Table) kitchen.getFloor(3, 1).getTable();
+                    game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 3 && j == 14) { //Gerador de Pão
+                    if(kitchen.getFloor(3, 14).dontHaveActors()) {
+                        Generator genBun = new Generator(80*14, 80*3, "bun", new Texture(Gdx.files.internal("Kitchen/genBurgerImage.png")));
+                        kitchen.getFloor(3, 14).addActors(genBun);
+                    }
+                    auxGen = (Generator) kitchen.getFloor(3, 14).getGen();
+                    game.batch.draw(auxGen.getTexture(), auxGen.x, auxGen.y, auxGen.width, auxGen.height);
+                    if(kitchen.getFloor(3, 14).getFood() == null) {
+                        Generator auxGenBun = (Generator) kitchen.getFloor(3,14).getGen();
+                        kitchen.getFloor(3, 14).addActors(auxGenBun.generateFood());
+                    }
+                    aux = (Food) kitchen.getFloor(3, 14).getFood();
+                    game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
+                } else if (i == 4 && j == 1) { //Fogão
+                    if(kitchen.getFloor(4, 1).dontHaveActors()) {
+                        Oven oven = new Oven(80, 80*4, new Texture(Gdx.files.internal("Kitchen/ovenV.png")));
+                        kitchen.getFloor(4, 1).addActors(oven);
+                    }
+                    auxO = (Oven) kitchen.getFloor(4, 1).getOven();
+                    game.batch.draw(auxO.getTexture(),auxO.x, auxO.y, auxO.width, auxO.height);
+                    aux = (Food) kitchen.getFloor(4, 1).getFood();
+                    auxO.startCooking(aux, delta);
+                } else if (i >=4 && i < 7 && j == 14) { //Mesa
+                    if(kitchen.getFloor(i, 14).dontHaveActors()) {
+                        Table tableH = new Table(1120, 80 * i);
+                        kitchen.getFloor(i, 14).addActors(tableH);
+                    }
+                    auxTable = (Table) kitchen.getFloor(i, 14).getTable();
+                    game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 6 && j < 6) { //Mesa
+                    if (kitchen.getFloor(6, j).dontHaveActors()) {
+                        Table tableV = new Table(80 * j, 480);
+                        kitchen.getFloor(6, j).addActors(tableV);
+                    }
+                    auxTable = (Table) kitchen.getFloor(6, j).getTable();
+                    game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 6 && j == 6) { //Lixeira
+                    if(kitchen.getFloor(6, 6).dontHaveActors()){
+                        Trash trash = new Trash(80*6, 80*6, new Texture(Gdx.files.internal("Kitchen/trashImage.png")), kitchen.getFloor(6, 6));
+                        kitchen.getFloor(6, 6).addActors(trash);
+                    }
+                    Trash auxT = (Trash) kitchen.getFloor(6, 6).getTrash();
+                    auxT.deleteFood();
+                    game.batch.draw(auxT.getTexture(),auxT.x, auxT.y, auxT.width, auxT.height);
+                } else if (i == 6 && j == 7) { //Mesa
+                    if (kitchen.getFloor(6, 7).dontHaveActors()) {
+                        Table tableV = new Table(80 * 7, 480);
+                        kitchen.getFloor(6, 7).addActors(tableV);
+                    }
+                    auxTable = (Table) kitchen.getFloor(6, 7).getTable();
+                    game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 6 && j == 8) { //Fogão
+                    if(kitchen.getFloor(6, 8).dontHaveActors()) {
+                        Oven oven = new Oven(640, 80*6, new Texture(Gdx.files.internal("Kitchen/ovenH.png")));
+                        kitchen.getFloor(6, 8).addActors(oven);
+                    }
+                    auxO = (Oven) kitchen.getFloor(6, 8).getOven();
+                    game.batch.draw(auxO.getTexture(),auxO.x, auxO.y, auxO.width, auxO.height);
+                    aux = (Food) kitchen.getFloor(6, 8).getFood();
+                    if(aux != null && aux.getCookable()){
+                        auxO.startCooking(aux, delta);
+                    }
+                } else if (i == 6 && j >= 9 && j < 11) { //Mesa
+                    if (kitchen.getFloor(6, j).dontHaveActors()) {
+                        Table tableV = new Table(80 * j, 480);
+                        kitchen.getFloor(6, j).addActors(tableV);
+                    }
+                    auxTable = (Table) kitchen.getFloor(6, j).getTable();
+                    game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if ((i == 5 || i == 6) && j == 1) { //Mesa
+                    if (kitchen.getFloor(i, 1).dontHaveActors()) {
+                        Table tableH = new Table(80, 80 * i);
+                        kitchen.getFloor(i, 1).addActors(tableH);
+                    }
+                    auxTable = (Table) kitchen.getFloor(i, 1).getTable();
+                    game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                } else if (i == 6 && j == 11) { //Delivery de Pedidos
+                    if(kitchen.getFloor(i, j).dontHaveActors()){
+                        OrderDelivery delivery = new OrderDelivery(80*j, 80*i, new Texture(Gdx.files.internal("Kitchen/orderTableUpH.png")), kitchen.getFloor(i, j));
+                        kitchen.getFloor(i, j).addActors(delivery);
+                    }
+                    OrderDelivery auxOrd = (OrderDelivery) kitchen.getFloor(i, j).getOrderDelivery();
+                    orderController.connectOrderDelivery(auxOrd);
+                    orderController.checkOrders();
+                    game.batch.draw(auxOrd.getTexture(),auxOrd.x, auxOrd.y, auxOrd.width, auxOrd.height);
+                } else if (i == 6 && j > 11 && j < 15) { //Mesa
+                    if (kitchen.getFloor(6, j).dontHaveActors()) {
+                        Table tableV = new Table(80 * j, 480);
+                        kitchen.getFloor(6, j).addActors(tableV);
+                    }
+                    auxTable = (Table) kitchen.getFloor(6, j).getTable();
+                    game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
+                }
             }
-            auxTable = (Table) kitchen.getFloor(6, j).getTable();
-            game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-        }
-        if(kitchen.getFloor(6, 7).dontHaveActors()) {
-            Table tableV = new Table(80 * 7, 480);
-            kitchen.getFloor(6, 7).addActors(tableV);
-        }
-        auxTable = (Table) kitchen.getFloor(6, 7).getTable();
-        game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-
-        //mesas que estão na horizontal, na matriz de [6][9] ate [6][15]
-        for(int j=10; j<15;j++){
-            if(kitchen.getFloor(6, j).dontHaveActors()) {
-                Table tableV = new Table(80 * j, 480);
-                kitchen.getFloor(6, j).addActors(tableV);
-            }
-            auxTable = (Table) kitchen.getFloor(6, j).getTable();
-            game.batch.draw(tableImageV, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-        }
-
-        //Cria o fim da mesa na posicao [0][1]
-        if(kitchen.getFloor(0, 1).dontHaveActors()) {
-            Table tableFront1 = new Table(80, 0);
-            kitchen.getFloor(0, 1).addActors(tableFront1);
-        }
-        auxTable = (Table) kitchen.getFloor(0, 1).getTable();
-        game.batch.draw(tableImageFront, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-
-        //Cria mesas que estão na vertical
-        if(kitchen.getFloor(3,1).dontHaveActors()) {
-            Table tableH = new Table(80, 80 * 3);
-            kitchen.getFloor(3, 1).addActors(tableH);
-        }
-        auxTable = (Table) kitchen.getFloor(3, 1).getTable();
-        game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-        for(int i=5; i<7; i++){
-            if(kitchen.getFloor(i,1).dontHaveActors()) {
-                Table tableH = new Table(80, 80 * i);
-                kitchen.getFloor(i, 1).addActors(tableH);
-            }
-            auxTable = (Table) kitchen.getFloor(i, 1).getTable();
-            game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-        }
-        if(kitchen.getFloor(1,1).dontHaveActors()) {
-            Table tableH = new Table(80, 80);
-            kitchen.getFloor(1, 1).addActors(tableH);
-        }
-        auxTable = (Table) kitchen.getFloor(1, 1).getTable();
-        game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-
-        //Cria o outro final da mesa
-        if(kitchen.getFloor(0, 14).dontHaveActors()) {
-            Table tableFront2 = new Table(1120, 0);
-            kitchen.getFloor(0, 14).addActors(tableFront2);
-        }
-        auxTable = (Table) kitchen.getFloor(0, 14).getTable();
-        game.batch.draw(tableImageFront, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
-
-        for(int i=4; i<7; i++){
-            if(kitchen.getFloor(i, 14).dontHaveActors()) {
-                Table tableH = new Table(1120, 80 * i);
-                kitchen.getFloor(i, 14).addActors(tableH);
-            }
-            auxTable = (Table) kitchen.getFloor(i, 14).getTable();
-            game.batch.draw(tableImageH, auxTable.x, auxTable.y, auxTable.width, auxTable.height);
         }
 
         //desenhando as comidas que estão pelo mapa
@@ -161,7 +257,7 @@ public class ScreenLevel1 implements Screen{
             }
         }
 
-        //movimento
+        //Comandos
         if (Gdx.input.isKeyJustPressed(Keys.LEFT)) {
             controller.left();
             chef.updateActorsCoordinates();
