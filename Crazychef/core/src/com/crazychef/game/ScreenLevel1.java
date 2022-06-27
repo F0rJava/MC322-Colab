@@ -321,8 +321,8 @@ public class ScreenLevel1 implements Screen{
             chef.x = 0;
         if (chef.x > 1280 - 80)
             chef.x = 1280 - 80;
-        if (chef.y > 720 - 80)
-            chef.y = 720 - 80;
+        if (chef.y > 560 - 80)
+            chef.y = 560 - 80;
         if (chef.y < 0)
             chef.y = 0;
 
