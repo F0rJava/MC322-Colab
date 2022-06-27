@@ -80,19 +80,22 @@ public class Order extends Rectangle {
     //gera o pedido aleatorio com até 4 comidas (pao sempre no final
     public void generateOrder(){
         Random rand = new Random();
+        Food aux;
         for(int i=1; i<3; i++){
             int int_rand = rand.nextInt(3);
             //gera a comida aleatoria e insere no vetor de comidas do pedido
             switch(int_rand){
                 case 1:
-                    Food aux = new Burger(this.x, this.y+17);
+                    aux = new Burger(this.x, this.y+17);
                     aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/cookedBurger.png")));
                     this.insertSorted(this.food, aux);
                     break;
                 case 2:
                     case 3:
-                    this.insertSorted(this.food, new Lettuce(this.x, this.y+17));
-                    break;
+                        aux = new Lettuce(this.x, this.y+17);
+                        aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/LettuceCut.png")));
+                        this.insertSorted(this.food, aux);
+                        break;
             }
         }
         //posiciona o pao no final

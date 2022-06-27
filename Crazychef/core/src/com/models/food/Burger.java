@@ -14,8 +14,9 @@ public class Burger extends Food {
     private Music OvenTimer;
     private Music OvenCooked;
     private Music OvenAlarm;
-
+    private boolean OvenAlarmPlaying = false;
     private boolean OvenTimerPlaying = false;
+    private boolean OvenCookedPlaying = false;
     public Burger(int x, int y){
         super(x,y, new Texture(Gdx.files.internal("Food/Level1/rawBurger.png")));
         this.cookable = true;
@@ -33,11 +34,11 @@ public class Burger extends Food {
     public void updateTime(float dt){
         timeCount+=dt;
         if (timeUntilCooked>0){
+            if(!OvenTimerPlaying){
+                OvenTimer.play();
+                OvenTimerPlaying = true;
+            }
             if(timeCount>=1){
-                if(!OvenTimerPlaying){
-                    OvenTimer.play();
-                    OvenTimerPlaying = true;
-                }
                 timeUntilCooked--;
                 timeToBurn--;
                 timeCount = 0;
@@ -46,12 +47,18 @@ public class Burger extends Food {
         if(timeUntilCooked == 0 && timeToBurn == 0){
             this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/toastedBurger.png")));
             super.setCooked(false);
-            OvenAlarm.play();
+            if(!OvenAlarmPlaying) {
+                OvenAlarm.play();
+                OvenAlarmPlaying = true;
+            }
         }
         else if(timeUntilCooked == 0){
             OvenTimer.stop();
             OvenTimerPlaying = false;
-            OvenCooked.play();
+            if(!OvenCookedPlaying) {
+                OvenCooked.play();
+                OvenCookedPlaying = true;
+            }
             this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/cookedBurger.png")));
             super.setCooked(true);
         }
