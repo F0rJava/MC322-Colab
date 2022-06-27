@@ -48,7 +48,7 @@ public class MainMenuScreen implements Screen{
 
         game.batch.begin(); //inicia a renderização
         game.batch.draw(mainMenuBackground, 0,0, 1280, 720);//imagem do fundo
-        game.batch.draw(gameTitle, 400, 450);//imagem do titulo
+        game.batch.draw(gameTitle, 300, 300, 700,420);//imagem do titulo
         game.batch.end();//finaliza a renderização
         stage.draw();
 
