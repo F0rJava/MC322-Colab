@@ -25,7 +25,7 @@ public class OrderController {
         lastGeneratedOrder += dt;
         for(int i=0; i<3; i++){
             if(orders[i] == null){
-                if(i == 0 && lastGeneratedOrder > 1){
+                if(i == 0 && lastGeneratedOrder > 3){
                     orders[i] = new Order(i*320);
                     orders[i].generateOrder();
                     lastGeneratedOrder = 0;
@@ -61,7 +61,15 @@ public class OrderController {
     public void shiftOrders(Order[] orders, int i){
         for(int j=i; j<3; j++){
             if(j+1!=3){
-                orders[j] = orders[j+1];
+                if(orders[j+1]!=null){
+                    orders[j] = orders[j+1];
+                    orders[j].x -= 320;
+                    for(int k=0; k<4; k++){//corrige pos das comidas
+                        if(orders[j].getFood(k)!=null)
+                            orders[j].getFood(k).x -=320;
+                    }
+                    orders[j].getTimeBar().x-=320;
+                }
             }
             else orders[j] = null;
         }
