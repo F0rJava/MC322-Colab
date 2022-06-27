@@ -18,7 +18,6 @@ import com.models.mapdesign.*;
 import com.sun.tools.javac.jvm.Gen;
 import sun.tools.jconsole.Tab;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 
@@ -328,8 +327,14 @@ public class ScreenLevel1 implements Screen{
         }
 
         //desenha o tempo da fase
-        game.font.draw(game.batch, String.valueOf(controller.getLevelTime()/60)+":"+String.format("%02d",controller.getLevelTime()%60),100, 100);
+        BitmapFont font = new BitmapFont(Gdx.files.internal("Fonts/UVatrjTBDF_CifhmfyVHP_hy.ttf.fnt"));
+        font.getData().setScale(1.8f, 1.8f);
+        font.draw(game.batch, String.valueOf(controller.getLevelTime()/60)+":"+String.format("%02d",controller.getLevelTime()%60),1130, 620);
+        font.getData().setScale(1.5f, 1.5f);
+        font.draw(game.batch, "TIME",1130, 690);
         game.batch.end();
+
+        //desenha a pontuação
 
         //nao deixa o chef sair das bordas da tela
         if (chef.x < 0)
@@ -340,6 +345,8 @@ public class ScreenLevel1 implements Screen{
             chef.y = 720 - 80;
         if (chef.y < 0)
             chef.y = 0;
+
+
     }
 
 
