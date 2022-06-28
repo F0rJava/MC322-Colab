@@ -28,7 +28,7 @@
 # Slides do Projeto
 
 ## Slides da Prévia
-> * [Link](assets/Crazychef(1).pdf)
+> * [Link](assets/Crazychef.pdf)
 
 ## Slides da Apresentação Final
 > * [Link](https://docs.google.com/presentation/d/149JKsbZuESQA_N5AeuSi4SHDt1VzXNynNk-ZeZFEMjE/edit#slide=id.g1202abbc024_0_0)
