@@ -96,15 +96,16 @@ public class Order extends Rectangle {
                     this.insertSorted(this.food, aux);
                     break;
                 case 3:
+                    aux = new Lettuce(this.x, this.y+17);
+                    aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level2/LettuceCut.png")));
+                    this.insertSorted(this.food, aux);
+                    break;
+                case 4:
                     aux = new Tomato(this.x, this.y+17);
                     aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level2/tomatoCut.png")));
                     this.insertSorted(this.food, aux);
                     break;
-                case 4:
-                    aux = new Lettuce(this.x, this.y+17);
-                    aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level2/lettuceCut.png")));
-                    this.insertSorted(this.food, aux);
-                    break;
+
             }
         }
         //posiciona o pao no final

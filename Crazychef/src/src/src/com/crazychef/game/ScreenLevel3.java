@@ -217,7 +217,7 @@ public class ScreenLevel3 implements Screen{
                     }
                     aux = (Food) kitchen.getFloor(i, j).getFood();
                     game.batch.draw(aux.getBaseTexture(), aux.x, aux.y, aux.width, aux.height);
-                } else if ((i == 0 || i == 6) && j == 15) { //Deliverys
+                } else if ( i == 6 && j == 15) { //Delivery
                     if(kitchen.getFloor(i, j).dontHaveActors()){
                         OrderDelivery delivery = new OrderDelivery(80*j, 80*i, new Texture(Gdx.files.internal("Kitchen/orderTableUpH.png")), kitchen.getFloor(i, j));
                         kitchen.getFloor(i, j).addActors(delivery);
@@ -226,6 +226,15 @@ public class ScreenLevel3 implements Screen{
                     orderController.connectOrderDelivery(auxOrd);
                     orderController.checkOrders();
                     game.batch.draw(auxOrd.getTexture(),auxOrd.x, auxOrd.y, auxOrd.width, auxOrd.height);
+                } else if ( i == 0 && j == 15) { //Delivery
+                        if(kitchen.getFloor(i, j).dontHaveActors()){
+                            OrderDelivery delivery = new OrderDelivery(80*j, 80*i, new Texture(Gdx.files.internal("Kitchen/orderTableUpH.png")), kitchen.getFloor(i, j));
+                            kitchen.getFloor(i, j).addActors(delivery);
+                        }
+                        OrderDelivery auxOrd = (OrderDelivery) kitchen.getFloor(i, j).getOrderDelivery();
+                        orderController.connectOrderDelivery(auxOrd);
+                        orderController.checkOrders();
+                        game.batch.draw(auxOrd.getTexture(),auxOrd.x, auxOrd.y, auxOrd.width, auxOrd.height);
                 } else if ((i == 2 || i == 5) && (j == 6 || j == 9)) { //Buracos
                     if(kitchen.getFloor(i, j).dontHaveActors()){
                         Hole hole = new Hole(80*j, 80*i, new Texture(Gdx.files.internal("Kitchen/hole.png")), chef, kitchen.getFloor(i, j), kitchen.getFloor(5, 12));
