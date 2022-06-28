@@ -27,10 +27,12 @@ public class OrderDelivery extends Actors {
     public boolean checkOrder(Order order){
         int aux = floor.getActors().size()-2;
         for(int i=2; i<floor.getActors().size(); i++){
-            if(order.getFood(i-2)!=null){
-                if(floor.getActors().get(i) instanceof Food){
-                    if(floor.getActors().get(i).getClass() == order.getFood(i-2).getClass()){
-                        aux--;
+            if(i-2 < 4) {
+                if (order.getFood(i - 2) != null) {
+                    if (floor.getActors().get(i) instanceof Food) {
+                        if (floor.getActors().get(i).getClass() == order.getFood(i - 2).getClass()) {
+                            aux--;
+                        }
                     }
                 }
             }

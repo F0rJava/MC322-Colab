@@ -57,6 +57,8 @@ public class Order extends Rectangle {
     public Food getFood(int i){
         return food[i];
     }
+
+    public int getFoodSize(){return food.length;}
     public Integer getOrderTime(){
         return this.orderTime;
     }
