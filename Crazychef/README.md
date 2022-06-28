@@ -23,7 +23,7 @@
 
 # Arquivo Executável do Jogo
 
-> * [Download](Crazychef.jar)
+> * [Download](https://github.com/F0rJava/MC322-Colab/raw/main/Crazychef/Crazychef.jar)
  
 # Slides do Projeto
 
