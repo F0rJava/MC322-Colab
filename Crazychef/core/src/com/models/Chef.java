@@ -31,8 +31,8 @@ public class Chef extends Actors {
         orientation[1] = false;//chefBack
         orientation[2] = false;//chefLeft
         orientation[3] = false;//chefRight
-
-        chefFront = new Texture(Gdx.files.internal("Chef/chefFront.png"));//textura do chef
+        //chefFront = new Texture(Gdx.files.internal("Chef/chefFront.png"));
+        chefFront = new Texture(Gdx.files.internal("Food/vanish.png"));//textura do chef
         chefBack = new Texture(Gdx.files.internal("Chef/chefBack.png"));
         chefRight = new Texture(Gdx.files.internal("Chef/chefRight.png"));
         chefLeft = new Texture(Gdx.files.internal("Chef/chefLeft.png"));

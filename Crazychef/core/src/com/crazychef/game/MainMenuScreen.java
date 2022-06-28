@@ -37,7 +37,7 @@ public class MainMenuScreen implements Screen{
         Level2.setPosition(450, 175);
         Level2.setSize(400, 197);
 
-        Level3 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("Level2Button.png")))));
+        Level3 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("Level3Button.png")))));
         Level3.setPosition(850, 175);
         Level3.setSize(400, 197);
 
