@@ -38,5 +38,5 @@
 ## Diagrama Geral da Arquitetura do Jogo
 
 > ![Arquitetura Final 1](assets/ArquiteturaFinal1.png)
-> ![Arquitetura Final 2]()
+> ![Arquitetura Final 2](assets/ArquiteturaFinal2.png)
 > ![Arquitetura Final 3](assets/ArquiteturaFinal3.png)
