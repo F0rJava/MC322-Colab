@@ -2,7 +2,6 @@ package com.models.mapdesign;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.models.Actors;
-import com.models.mapdesign.Floor;
 
 public class Kitchen {
     private Floor[][] floors;

@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.models.Food;
 import com.models.food.*;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.util.Random;
 

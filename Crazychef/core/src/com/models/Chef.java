@@ -1,8 +1,6 @@
 package com.models;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.models.food.Burger;
 import com.models.food.Plate;
 import com.badlogic.gdx.graphics.Texture;
 import com.models.mapdesign.Floor;

@@ -2,7 +2,6 @@ package com.models.mapdesign;
 
 import com.models.Actors;
 import com.models.Food;
-import com.models.food.Plate;
 
 import java.util.ArrayList;
 

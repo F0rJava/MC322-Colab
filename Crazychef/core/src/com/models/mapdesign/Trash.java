@@ -6,8 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.models.Actors;
 import com.models.Food;
 
-import java.util.ArrayList;
-
 public class Trash extends Actors {
     private Texture texture;
     private Floor floor;
