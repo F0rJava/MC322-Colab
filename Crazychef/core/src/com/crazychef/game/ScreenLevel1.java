@@ -327,7 +327,7 @@ public class ScreenLevel1 implements Screen{
 
         //fim do jogo
         if(controller.getLevelTime()==0){
-            game.setScreen(new EndLevelScreen(game, this.controller, this.orderController));
+            game.setScreen(new EndLevelScreen(game, this.controller, this.orderController, this));
         }
 
     }

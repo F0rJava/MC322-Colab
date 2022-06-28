@@ -17,7 +17,15 @@ public class PauseScreen implements Screen {
     public PauseScreen(Crazychef game, Screen levelScreen) {
         this.game = game;
         this.screen = levelScreen;
-        pauseScreenTexture = new Texture(Gdx.files.internal("Food/Level1/endGameLevel1.png"));
+        if(screen instanceof ScreenLevel1){
+            pauseScreenTexture = new Texture(Gdx.files.internal("Food/Level1/endGameLevel1.png"));
+        } else if (screen instanceof  ScreenLevel2) {
+            pauseScreenTexture = new Texture(Gdx.files.internal("Food/Level2/endGameLevel2.png"));
+
+        }
+        else{
+            pauseScreenTexture = new Texture(Gdx.files.internal("Food/Level3/endGameLevel3.png"));
+        }
         camera = new OrthographicCamera();//camera
         camera.setToOrtho(false, 1280, 720);
     }

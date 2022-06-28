@@ -15,12 +15,21 @@ public class EndLevelScreen implements Screen {
     private OrderController orderController;
     private Texture endLevelTexture;
     private OrthographicCamera camera;
+    private Screen screen;
 
-    public EndLevelScreen(Crazychef game, Controller controller, OrderController orderController) {
+    public EndLevelScreen(Crazychef game, Controller controller, OrderController orderController, Screen screen) {
         this.game = game;
         this.controller = controller;
         this.orderController = orderController;
-        endLevelTexture = new Texture(Gdx.files.internal("Food/Level1/endGameLevel1.png"));
+        if(screen instanceof ScreenLevel1){
+            endLevelTexture = new Texture(Gdx.files.internal("Food/Level1/endGameLevel1.png"));
+        } else if (screen instanceof  ScreenLevel2) {
+            endLevelTexture = new Texture(Gdx.files.internal("Food/Level2/endGameLevel2.png"));
+
+        }
+        else{
+            endLevelTexture = new Texture(Gdx.files.internal("Food/Level3/endGameLevel3.png"));
+        }
         camera = new OrthographicCamera();//camera
         camera.setToOrtho(false, 1280, 720);
     }
