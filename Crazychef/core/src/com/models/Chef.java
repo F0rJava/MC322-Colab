@@ -82,14 +82,6 @@ public class Chef extends Actors {
         }
     }
 
-    public void updateFoodOrder(){
-        //ordem de inserção para fase 1: burger>tomate>alface>queijo>pao
-        Food aux;
-        for(int i = 1; i < hand.size(); i++){
-
-        }
-    }
-
     public boolean canHold(Food food){
         if(food != null) {
             if (hand.size() == 0)
@@ -135,6 +127,10 @@ public class Chef extends Actors {
                 hand.remove(0);
             }
         }
+    }
+
+    public void removeFromHand(int i){
+        hand.remove(i);
     }
 
     public void setCanMove(Boolean b){

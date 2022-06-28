@@ -11,7 +11,7 @@ public class Lettuce extends Food {
     private Music Cutting;
     private boolean CuttingPlaying = false;
     public Lettuce(int x, int y){
-        super(x, y, new Texture(Gdx.files.internal("Food/Level1/lettuce.png")));
+        super(x, y, new Texture(Gdx.files.internal("Food/Level2/lettuce.png")));
         this.cuttable = true;
         this.timeToCut = 3;
         this.prio = 2;
@@ -32,7 +32,7 @@ public class Lettuce extends Food {
             }
         }
         if(timeToCut == 0){
-            this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level1/LettuceCut.png")));
+            this.setBaseTexture(new Texture(Gdx.files.internal("Food/Level2/LettuceCut.png")));
             super.setCut();
         }
     }

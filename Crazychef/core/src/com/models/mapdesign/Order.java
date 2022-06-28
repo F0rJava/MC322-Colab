@@ -3,10 +3,7 @@ package com.models.mapdesign;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.models.Food;
-import com.models.food.Bun;
-import com.models.food.Burger;
-import com.models.food.Cheese;
-import com.models.food.Lettuce;
+import com.models.food.*;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.util.Random;
@@ -21,13 +18,15 @@ public class Order extends Rectangle {
     private Food food[];
     private Integer orderTime;
     private Integer remainingTime;
+    private Integer numOfFood;
     private float timeCount;
 
-    public Order(int x){
+    public Order(int x, int numOfFood){
         this.x = x;
         this.y = 560;
         this.width = 320;
         this.height = 160;
+        this.numOfFood = numOfFood;
 
         orderTime = 50;//tempo maximo que o pedido aparece na tela
         remainingTime = orderTime;//tempo restante do pedido
@@ -83,7 +82,7 @@ public class Order extends Rectangle {
         Random rand = new Random();
         Food aux;
         for(int i=1; i<3; i++){
-            int int_rand = rand.nextInt(3);
+            int int_rand = rand.nextInt(numOfFood);
             //gera a comida aleatoria e insere no vetor de comidas do pedido
             switch(int_rand){
                 case 1:
@@ -93,6 +92,16 @@ public class Order extends Rectangle {
                     break;
                 case 2:
                     aux = new Cheese(this.x, this.y+17);
+                    this.insertSorted(this.food, aux);
+                    break;
+                case 3:
+                    aux = new Tomato(this.x, this.y+17);
+                    aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level2/tomatoCut.png")));
+                    this.insertSorted(this.food, aux);
+                    break;
+                case 4:
+                    aux = new Lettuce(this.x, this.y+17);
+                    aux.setBaseTexture(new Texture(Gdx.files.internal("Food/Level2/lettuceCut.png")));
                     this.insertSorted(this.food, aux);
                     break;
             }

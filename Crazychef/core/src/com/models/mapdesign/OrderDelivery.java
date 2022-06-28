@@ -1,5 +1,7 @@
 package com.models.mapdesign;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.models.Actors;
 import com.models.Food;
@@ -7,6 +9,7 @@ import com.models.Food;
 public class OrderDelivery extends Actors {
     private Texture texture;
     private Floor floor;
+    private Music deliverySound;
 
     public OrderDelivery(int x, int y, Texture texture, Floor floor){
         super(x, y);
@@ -14,6 +17,8 @@ public class OrderDelivery extends Actors {
         this.floor = floor;
         this.width = 80;
         this.height = 80;
+        deliverySound = Gdx.audio.newMusic(Gdx.files.internal("Sounds/DeliverySound.mp3"));
+        deliverySound.setVolume(0.25f);
     }
     public Texture getTexture(){
         return texture;
@@ -36,6 +41,7 @@ public class OrderDelivery extends Actors {
                         j--;
                     }
                 }
+                deliverySound.play();
                 return true;
             }
         }

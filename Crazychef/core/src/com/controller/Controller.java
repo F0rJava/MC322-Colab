@@ -2,6 +2,7 @@ package com.controller;
 
 import com.models.*;
 import com.models.food.Plate;
+import com.models.mapdesign.Floor;
 import com.models.mapdesign.Kitchen;
 
 import java.util.ArrayList;
@@ -18,10 +19,13 @@ public class Controller{
         if(chef.getCanMove()) {
             chef.setOrientation(1);
             chef.updateActorsCoordinates();
-            if (Math.round(chef.y / 80) + 1 < 9 && kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).dontHaveActors()) {
-                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
-                kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).addActors(chef); //adiciona o chef na nova posição
-                chef.y += 80; //atualiza o atributo y do chef para a nova posição
+            if (Math.round(chef.y / 80) + 1 < 9){
+                Floor aux = kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80));
+                if(aux.dontHaveActors() || aux.haveHole()) {
+                    kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                    kitchen.getFloor(Math.round(chef.y / 80) + 1, Math.round(chef.x / 80)).addActors(chef); //adiciona o chef na nova posição
+                    chef.y += 80; //atualiza o atributo y do chef para a nova posição
+                }
             }
         }
     }
@@ -29,10 +33,13 @@ public class Controller{
         if(chef.getCanMove()) {
             chef.setOrientation(0);
             chef.updateActorsCoordinates();
-            if (Math.round(chef.y / 80) - 1 >= 0 && kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).dontHaveActors()) {
-                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
-                kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).addActors(chef); //adiciona o chef na nova posição
-                chef.y -= 80; //atualiza o atributo y do chef para a nova posição
+            if (Math.round(chef.y / 80) - 1 >= 0){
+                Floor aux = kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80));
+                if(aux.dontHaveActors() || aux.haveHole()) {
+                    kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                    kitchen.getFloor(Math.round(chef.y / 80) - 1, Math.round(chef.x / 80)).addActors(chef); //adiciona o chef na nova posição
+                    chef.y -= 80; //atualiza o atributo y do chef para a nova posição
+                }
             }
         }
     }
@@ -40,10 +47,13 @@ public class Controller{
         if(chef.getCanMove()){
             chef.setOrientation(2);
             chef.updateActorsCoordinates();
-            if (Math.round(chef.x / 80) - 1 >= 0 && kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).dontHaveActors()) {
-                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
-                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).addActors(chef); //adiciona o chef na nova posição
-                chef.x -= 80; //atualiza o atributo x do chef para a nova posição
+            if (Math.round(chef.x / 80) - 1 >= 0){
+                Floor aux = kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1);
+                if (aux.dontHaveActors() || aux.haveHole()) {
+                    kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                    kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) - 1).addActors(chef); //adiciona o chef na nova posição
+                    chef.x -= 80; //atualiza o atributo x do chef para a nova posição
+                }
             }
         }
     }
@@ -51,10 +61,13 @@ public class Controller{
         if(chef.getCanMove()) {
             chef.setOrientation(3);
             chef.updateActorsCoordinates();
-            if (Math.round(chef.x / 80) + 1 < 16 && kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).dontHaveActors()) {
-                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
-                kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).addActors(chef); //adiciona o chef na nova posição
-                chef.x += 80; //atualiza o atributo x do chef para a nova posição
+            if (Math.round(chef.x / 80) + 1 < 16){
+                Floor aux = kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1);
+                if(aux.dontHaveActors() || aux.haveHole()) {
+                    kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80)).removeActors(chef); //remove o chefe da posição anterior
+                    kitchen.getFloor(Math.round(chef.y / 80), Math.round(chef.x / 80) + 1).addActors(chef); //adiciona o chef na nova posição
+                    chef.x += 80; //atualiza o atributo x do chef para a nova posição
+                }
             }
         }
     }

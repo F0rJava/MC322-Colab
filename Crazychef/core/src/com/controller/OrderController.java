@@ -10,9 +10,11 @@ public class OrderController {
     private float lastGeneratedOrder; //tempo em segundos do ultimo pedido gerado
     private Integer points = 0;
     private OrderDelivery orderDelivery;// objeto que entrega os pedidos
+    private Integer numOfFood;
 
-    public OrderController(){
+    public OrderController(int numOfFood){
         this.orders = new Order[3];//no maximo 3 pedidos simultaneos
+        this.numOfFood = numOfFood;
     }
     public void connectOrderDelivery(OrderDelivery orderDelivery){
         this.orderDelivery = orderDelivery;
@@ -40,12 +42,12 @@ public class OrderController {
         for(int i=0; i<3; i++){
             if(orders[i] == null){
                 if(i == 0 && lastGeneratedOrder > 3){
-                    orders[i] = new Order(i*320);
+                    orders[i] = new Order(i*320, numOfFood);
                     orders[i].generateOrder();
                     lastGeneratedOrder = 0;
                 }
                 else if(lastGeneratedOrder > 5){
-                    orders[i] = new Order(i*320);
+                    orders[i] = new Order(i*320, numOfFood);
                     orders[i].generateOrder();
                     lastGeneratedOrder = 0;
                 }

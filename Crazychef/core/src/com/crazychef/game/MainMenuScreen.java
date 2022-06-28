@@ -20,7 +20,7 @@ public class MainMenuScreen implements Screen{
     private OrthographicCamera camera;
 
     private Stage stage;
-    private ImageButton Level1;
+    private ImageButton Level1, Level2, Level3;
     public MainMenuScreen(Crazychef game, Controller controller) {
         this.game = game;
         this.controller = controller;
@@ -28,11 +28,23 @@ public class MainMenuScreen implements Screen{
         gameTitle = new Texture(Gdx.files.internal("gameTitle.png"));
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
+
         Level1 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("Level1Button.png")))));
         Level1.setPosition(50, 175);
         Level1.setSize(400, 197);
+
+        Level2 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("Level2Button.png")))));
+        Level2.setPosition(450, 175);
+        Level2.setSize(400, 197);
+
+        Level3 = new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("Level2Button.png")))));
+        Level3.setPosition(850, 175);
+        Level3.setSize(400, 197);
+
         stage =  new Stage(new ScreenViewport());
         stage.addActor(Level1);
+        stage.addActor(Level2);
+        stage.addActor(Level3);
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -54,6 +66,12 @@ public class MainMenuScreen implements Screen{
 
         if(Level1.isPressed()){
             game.setScreen(new ScreenLevel1(game, this.controller));
+            dispose();
+        } else if (Level2.isPressed()) {
+            game.setScreen(new ScreenLevel2(game, this.controller));
+            dispose();
+        } else if (Level3.isPressed()) {
+            game.setScreen(new ScreenLevel3(game, this.controller));
             dispose();
         }
 

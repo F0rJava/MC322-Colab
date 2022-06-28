@@ -99,6 +99,22 @@ public class Floor {
         return null;
     }
 
+    public Actors getHole(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof Hole)
+                return actors.get(i);
+        }
+        return null;
+    }
+
+    public boolean haveHole(){
+        for(int i = 0; i < actors.size(); i++){
+            if(actors.get(i) instanceof Hole)
+                return true;
+        }
+        return false;
+    }
+
     public void insertSorted(Food food){
         Food aux;
         int aux2 = actors.size();
