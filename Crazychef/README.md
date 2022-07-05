@@ -33,6 +33,37 @@
 ## Slides da Apresentação Final
 > * [Link](https://docs.google.com/presentation/d/149JKsbZuESQA_N5AeuSi4SHDt1VzXNynNk-ZeZFEMjE/edit#slide=id.g1202abbc024_0_0)
 
+## Relatório de Evolução
+>  
+
+# Destaques de Código
+
+~~~java
+public void(...){
+...
+}
+~~~ 
+
+# Destaques de Orientação a Objetos
+> Kitchen matriz de Floor, Floor ArrayList de Actors (Polimorfismo).
+
+~~~java
+public class Kitchen{
+   private Floor[][] floors;
+   ...
+}
+
+public class Floor {
+   private ArrayList<Actors> actors;
+   ...
+}
+
+public class Actors extends Rectangle{
+   private Rectabgle actor;
+   ...
+}
+
+~~~
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo
