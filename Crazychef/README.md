@@ -71,8 +71,8 @@ public class Actors extends Rectangle{
 ~~~
 
 # Destaques de Patterns:
-> Foi utilizado o pattern Strategy nas comidas, onde herdeiras diferentes da classe Food possam ser "cortáveis", "cozinháveis" ou nenhum dos dois.
-> Também foi utilizado o pattern Observer, onde o chef tem um "relacionamento" direto com as Food presentes em sua mão, pois em cada movimento ou ação do chef as texturas e posições das comidas na matriz Kitchen podem mudar.
+> * Foi utilizado o pattern Strategy nas comidas, onde herdeiras diferentes da classe Food possam ser "cortáveis", "cozinháveis" ou nenhum dos dois.
+> * Também foi utilizado o pattern Observer, onde o chef tem um "relacionamento" direto com as Food presentes em sua mão, pois em cada movimento ou ação do chef as texturas e posições das comidas na matriz Kitchen podem mudar.
 
 ## Diagrama do Pattern:
 > * Strategy:
