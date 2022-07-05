@@ -47,6 +47,11 @@ public void(...){
 # Destaques de Orientação a Objetos
 > Kitchen matriz de Floor, Floor ArrayList de Actors (Polimorfismo).
 
+## Diagrama de Classes usada no destaque OO:
+> ![DiagramaClassesOO]()
+
+## Código do destaque OO:
+
 ~~~java
 public class Kitchen{
    private Floor[][] floors;
@@ -64,6 +69,98 @@ public class Actors extends Rectangle{
 }
 
 ~~~
+
+# Destaques de Patterns:
+> Foi utilizado o pattern Strategy nas comidas, onde herdeiras diferentes da classe Food possam ser "cortáveis", "cozinháveis" ou nenhum dos dois.
+> Também foi utilizado o pattern Observer, onde o chef tem um "relacionamento" direto com as Food presentes em sua mão, pois em cada movimento ou ação do chef as texturas e posições das comidas na matriz Kitchen podem mudar.
+
+## Diagrama do Pattern:
+> * Strategy:
+> ![DiagramaStrategy]()
+> * Observerver:
+> ![DiagramaObserver]()
+
+## Código do Pattern:
+> * Strategy:
+~~~java
+//Classe abstrata
+public abstract class Food extends Actors{
+   protected boolean cockable = false;
+   protected boolean isCooked = false;
+   protected boolean cuttable = false;
+   protected boolean isCut = false;
+   ...
+   public void updateTime(float dt){}
+}
+
+//Exemplo de comida cortável
+public class Lettuce extends Food{
+   private Integer timetoCut;
+   private float timeCount;
+   ...
+   public void updateTime(float dt){
+      timeCount += dt;
+      if(timeToCut>0){
+         ...
+      }
+      if(timeToCut == 0){
+         ...
+      }
+   }
+}
+
+//Exemplo de comida cozinhável
+public class Burger extends Food{
+   private Integer timeUntilCooked;
+   private Integer timeToBurn;
+   private float timeCount;
+   ...
+   public void updateTime(float dt){
+      timeCount += dt;
+      if(timeUntilCooked > 0){
+         ...
+      }
+      if(timeUntilCooked == 0 && timeToBurn == 0){
+         ...
+      }
+      else if(timeUntilCooked == 0){
+         ...
+      }
+      if(timeToBurn > 0){
+         ...
+      }
+   }
+}
+~~~
+
+> * Observer:
+~~~java
+public class Chef extends Actors{
+   private Plate plate;
+   private ArrayList<Food> hand;
+   ...
+   public void updateActorsCoordinates(){
+      for(int i = 0; i < hand.size(); i++){
+         hand.get(i).setX(this.x);
+         hand.get(i).setY(this.y);
+         if(orientation[0])
+            hand.get(i).setOrientation(0, 10);
+         else if(orientation[1])
+            hand.get(i).setOrientation(0, 0);
+         else if(orientation[2])
+            hand.get(i).setOrientation(-20,20);
+         else if(orientation[3])
+            hand.get(i).setOrientation(20,20);
+      }
+   }
+}
+~~~
+
+> Explicação ...
+
+# Conclusões e Trabalhos Futuros
+> Conclusão
+
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo
