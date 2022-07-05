@@ -161,7 +161,9 @@ public class Chef extends Actors{
 > Explicação ...
 
 # Conclusões e Trabalhos Futuros
-> Conclusão
+> Com a realização do projeto, podemos perceber o quão impactante é a determinação de uma arquitetura bem-feita e coesa antes do início do desenvolvimento. Apesar da nossa arquitetura ter suprido a necessidade até certo ponto, a adição de funções que, não havíamos determinado como seriam feitas previamente, ocasionou em problemas de referência aos objetos (uso de ‘casting’ em alguns momentos).
+	Dentre os design patterns que não puderam ser implementados a tempo, temos o “factory”, que poderia ser uma classe construtora de fases, não necessitando que a instanciação e posicionamento de cada objeto fosse feito dentro da classe de fase. 
+	Apesar de alguns problemas de arquitetura, acreditamos que se realizarmos as correções necessárias e adicionarmos os desgin patterns citados, nosso projeto possui grande potencial de escalabilidade, pois é simples de alterar a posição dos objetos no mapa, alterar tempo de fase, tempo de pedidos, pontuação, implementar novos ingredientes, entre outros.
 
 # Diagramas
 
