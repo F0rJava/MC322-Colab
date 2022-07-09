@@ -70,7 +70,7 @@ public class Chef extends Actors{
 > Kitchen matriz de Floor, Floor ArrayList de Actors (Polimorfismo).
 
 ## Diagrama de Classes usada no destaque OO:
-> ![DiagramaClassesOO]()
+> ![DiagramaClassesOO](assets/DiagramaOO.png)
 
 ## Código do destaque OO:
 
@@ -98,9 +98,9 @@ public class Actors extends Rectangle{
 
 ## Diagrama do Pattern:
 > * Strategy:
-> ![DiagramaStrategy]()
+> ![DiagramaStrategy](assets/DiagramaStrategy.png)
 > * Observerver:
-> ![DiagramaObserver]()
+> ![DiagramaObserver](assets/DiagramaObserver.png)
 
 ## Código do Pattern:
 > * Strategy:
