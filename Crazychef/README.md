@@ -134,6 +134,7 @@ public class Burger extends Food{
    }
 }
 ~~~
+> O pattern 'Strategy' foi utilizado com o intuito de não engessar o código na adição de novos ingredientes. Ao herdar a classe 'Food', os ingredientes podem possuir diferentes atributos: podem ser cortáveis, cozinháveis, ambos, entre outras ações que podem ser adicionadas.
 
 > * Observer:
 ~~~java
@@ -158,7 +159,7 @@ public class Chef extends Actors{
 }
 ~~~
 
-> Explicação ...
+> O pattern 'Observer' foi adotado na movimentação do 'Chef', em que toda vez que ele muda sua orientação e posição os 'Actors' que estão em sua mão (hand) são informados dessa alteração, alterando também a sua própria posição.
 
 # Conclusões e Trabalhos Futuros
 > Com a realização do projeto, podemos perceber o quão impactante é a determinação de uma arquitetura bem-feita e coesa antes do início do desenvolvimento. Apesar da nossa arquitetura ter suprido a necessidade até certo ponto, a adição de funções que, não havíamos determinado como seriam feitas previamente, ocasionou em problemas de referência aos objetos (uso de ‘casting’ em alguns momentos).
