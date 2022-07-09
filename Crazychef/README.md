@@ -99,7 +99,9 @@ public class Actors extends Rectangle{
 ## Diagrama do Pattern:
 > * Strategy:
 > ![DiagramaStrategy](assets/DiagramaStrategy.png)
-> * Observerver:
+
+
+> * Observer:
 > ![DiagramaObserver](assets/DiagramaObserver.png)
 
 ## Código do Pattern:
