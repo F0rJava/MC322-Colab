@@ -41,10 +41,30 @@ Pensamos, então, em criar o ‘controlador de pedidos’, que seria instanciado
 # Destaques de Código
 
 ~~~java
-public void(...){
-...
+public class Chef extends Actors{
+    private boolean[] orientation;
+    private Texture chefFront;
+    private Texture chefBack;
+    private Texture chefLeft;
+    private Texture chefRight;
+    ...
+
+    //orientation é um vetor de 4 posições, onde a posição 0 indica que o chef está virado pra frente, 1 para trás, 
+      2 para esquerda e 3 para a direita, com cada movimento esse textura é atualizada e indicada para a impressão na tela.
+
+    public Texture getTexture(){
+        if(orientation[0])
+            return chefFront;
+        else if(orientation[1])
+            return chefBack;
+        else if(orientation[2])
+            return chefLeft;
+        else
+            return chefRight;
+    }
 }
 ~~~ 
+
 
 # Destaques de Orientação a Objetos
 > Kitchen matriz de Floor, Floor ArrayList de Actors (Polimorfismo).
